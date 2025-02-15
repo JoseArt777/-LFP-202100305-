@@ -1,3 +1,5 @@
+package com.mycompany.lfp_battle;
+
 public class Personaje {
     private String nombre;
     private int salud;
@@ -5,6 +7,7 @@ public class Personaje {
     private int defensa;
     private int vida;
 
+    // Constructor
     public Personaje(String nombre, int salud, int ataque, int defensa) {
         this.nombre = nombre;
         this.salud = salud;
@@ -13,11 +16,13 @@ public class Personaje {
         this.vida = salud * 10; // La vida inicial es 10 veces la salud
     }
 
+    // Método para recibir daño
     public void recibirDano(int dano) {
         this.vida -= dano;
         if (this.vida < 0) this.vida = 0;
     }
 
+    // Método para verificar si el personaje está vivo
     public boolean estaVivo() {
         return this.vida > 0;
     }
@@ -27,4 +32,10 @@ public class Personaje {
     public int getAtaque() { return ataque; }
     public int getDefensa() { return defensa; }
     public int getVida() { return vida; }
+
+    // Sobrescribir el método toString()
+    @Override
+    public String toString() {
+        return "Personaje{nombre='" + nombre + "', salud=" + salud + ", ataque=" + ataque + ", defensa=" + defensa + ", vida=" + vida + "}";
+    }
 }
