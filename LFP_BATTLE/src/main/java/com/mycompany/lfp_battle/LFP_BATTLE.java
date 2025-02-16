@@ -14,6 +14,8 @@ public class LFP_BATTLE {
         Scanner scanner = new Scanner(System.in);
         List<Personaje> personajes = new ArrayList<>();
         boolean salir = false;
+           String rutaAtaque = "output/reporte_ataque.html";
+        String rutaDefensa = "output/reporte_defensa.html";
 
         while (!salir) {
             System.out.println("========== MENU PRINCIPAL =========");
@@ -47,10 +49,31 @@ public class LFP_BATTLE {
                     }                    
                     break;
                 case 3:
-                    // Generar reporte de ataque
+                    // Generar reporte de mayor ataque
+                    if (personajes.isEmpty()) {
+                        System.out.println("No hay personajes cargados. Por favor, cargue un archivo primero.");
+                    } else {
+                        try {
+                            Reporte.generarReporteAtaque(personajes, rutaAtaque);
+                            System.out.println("Reporte de mayor ataque generado correctamente en: " + rutaAtaque);
+                        } catch (IOException e) {
+                            System.out.println("Error al generar el reporte de ataque.");
+                        }
+                    }
                     break;
+
                 case 4:
-                    // Generar reporte de defensa
+                 // Generar reporte de mayor defensa
+                    if (personajes.isEmpty()) {
+                        System.out.println("No hay personajes cargados. Por favor, cargue un archivo primero.");
+                    } else {
+                        try {
+                            Reporte.generarReporteDefensa(personajes, rutaDefensa);
+                            System.out.println("Reporte de mayor defensa generado correctamente en: " + rutaDefensa);
+                        } catch (IOException e) {
+                            System.out.println("Error al generar el reporte de defensa.");
+                        }
+                    }
                     break;
                 case 5:
                     System.out.println("===================================");
