@@ -39,7 +39,12 @@ public class LFP_BATTLE {
                     }
                     break;
                 case 2:
-                    // Lógica para jugar
+                    if (personajes.isEmpty()) {
+                        System.out.println("No hay personajes cargados. Por favor, cargue un archivo primero.");
+                    } else {
+                        Personaje campeon = Torneo.jugarTorneo(personajes);
+                        System.out.println("¡El campeón es: " + campeon.getNombre() + "!");
+                    }                    
                     break;
                 case 3:
                     // Generar reporte de ataque

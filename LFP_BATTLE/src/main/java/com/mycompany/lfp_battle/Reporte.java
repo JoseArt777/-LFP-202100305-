@@ -1,6 +1,5 @@
 package com.mycompany.lfp_battle;
 
-import com.mycompany.lfp_battle.Personaje;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;

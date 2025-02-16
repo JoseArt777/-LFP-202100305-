@@ -1,5 +1,4 @@
 package com.mycompany.lfp_battle;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +17,6 @@ public class LectorArchivo {
                 if (linea.trim().isEmpty() || linea.startsWith("#")) {
                     continue;
                 }
-
                 // Dividir la línea por comas
                 String[] datos = linea.split("\\|");
                 if (datos.length == 4) {
@@ -27,11 +25,9 @@ public class LectorArchivo {
                         int salud = Integer.parseInt(datos[1].trim());
                         int ataque = Integer.parseInt(datos[2].trim());
                         int defensa = Integer.parseInt(datos[3].trim());
-
                         // Crear el objeto Personaje
                         Personaje personaje = new Personaje(nombre, salud, ataque, defensa);
                         personajes.add(personaje);
-
                         // Mensaje de depuración
                         System.out.println("Linea " + numeroLinea + ": Cargado -> " + personaje);
                     } catch (NumberFormatException e) {
@@ -41,7 +37,6 @@ public class LectorArchivo {
                     System.err.println("Error en la línea " + numeroLinea + ": La línea no tiene 4 valores.");
                 }
             }
-                    
         }
         return personajes;
     }
