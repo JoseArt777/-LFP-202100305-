@@ -32,6 +32,7 @@ public class Personaje {
     public int getAtaque() { return ataque; }
     public int getDefensa() { return defensa; }
     public int getVida() { return vida; }
+    public int getSalud(){ return salud;}
 
     // Sobrescribir el método toString()
     @Override

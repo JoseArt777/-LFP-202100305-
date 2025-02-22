@@ -4,6 +4,7 @@ package com.mycompany.lfp_battle;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,15 +32,23 @@ public class LFP_BATTLE {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese la ruta del archivo:");
-                    String ruta = scanner.nextLine();
-                    try {
-                        personajes = LectorArchivo.cargarPersonajes(ruta);
-                        System.out.println("Archivo cargado correctamente.");
-                    } catch (IOException e) {
-                        System.out.println("Error al cargar el archivo.");
-                    }
-                    break;
+    System.out.println("Ingrese la ruta del archivo:");
+    String ruta = scanner.nextLine();
+    try {
+        personajes = LectorArchivo.cargarPersonajes(ruta);
+        if (!personajes.isEmpty()) {
+            System.out.println("Archivo cargado correctamente.");
+            String rutaHTML = "output/personajes.html"; // Ruta donde se guardará el HTML
+            LectorArchivo.generarHTML(personajes, rutaHTML);
+            System.out.println("Archivo HTML generado en: " + new File(rutaHTML).getAbsolutePath());
+        } else {
+            System.out.println("No se encontraron personajes en el archivo.");
+        }
+    } catch (IOException e) {
+        System.out.println("Error al cargar el archivo.");
+    }
+    break;
+
                 case 2:
                     if (personajes.isEmpty()) {
                         System.out.println("No hay personajes cargados. Por favor, cargue un archivo primero.");
@@ -87,6 +96,7 @@ public class LFP_BATTLE {
                     salir = true;
                     System.out.println("Saliendo...");
                     break;
+                    
                 default:
                     System.out.println("Opcion invalida.");
             }
