@@ -28,26 +28,26 @@ public class LFP_BATTLE {
             System.out.println("6. Salir");
 
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); // Limpia el buffer
 
             switch (opcion) {
                 case 1:
-    System.out.println("Ingrese la ruta del archivo:");
-    String ruta = scanner.nextLine();
-    try {
-        personajes = LectorArchivo.cargarPersonajes(ruta);
-        if (!personajes.isEmpty()) {
-            System.out.println("Archivo cargado correctamente.");
-            String rutaHTML = "output/personajes.html"; // Ruta donde se guardará el HTML
-            LectorArchivo.generarHTML(personajes, rutaHTML);
-            System.out.println("Archivo HTML generado en: " + new File(rutaHTML).getAbsolutePath());
-        } else {
-            System.out.println("No se encontraron personajes en el archivo.");
-        }
-    } catch (IOException e) {
-        System.out.println("Error al cargar el archivo.");
-    }
-    break;
+                    System.out.println("Ingrese la ruta del archivo:");
+                    String ruta = scanner.nextLine();
+                    try {
+                    personajes = LectorArchivo.cargarPersonajes(ruta);
+                     if (!personajes.isEmpty()) {
+                        System.out.println("Archivo cargado correctamente.");
+                        String rutaHTML = "output/personajes.html"; // Ruta donde se guardará el html
+                        LectorArchivo.generarHTML(personajes, rutaHTML);
+                        System.out.println("Archivo HTML generado en: " + new File(rutaHTML).getAbsolutePath());
+                    } else {
+                        System.out.println("No se encontraron personajes en el archivo.");
+                        }
+                        } catch (IOException e) {
+                          System.out.println("Error al cargar el archivo.");
+                        }
+                        break;
 
                 case 2:
                     if (personajes.isEmpty()) {
@@ -64,7 +64,7 @@ public class LFP_BATTLE {
                     } else {
                         try {
                             Reporte.generarReporteAtaque(personajes, rutaAtaque);
-                            System.out.println("Reporte de mayor ataque generado correctamente en: " + rutaAtaque);
+                            System.out.println("Reporte de mayor ataque generado en: " + rutaAtaque);
                         } catch (IOException e) {
                             System.out.println("Error al generar el reporte de ataque.");
                         }
