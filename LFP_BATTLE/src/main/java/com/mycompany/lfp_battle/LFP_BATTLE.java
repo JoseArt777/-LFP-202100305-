@@ -18,6 +18,20 @@ public class LFP_BATTLE {
            String rutaAtaque = "output/reporte_ataque.html";
         String rutaDefensa = "output/reporte_defensa.html";
 
+        System.out.println("===============================================");
+        System.out.println("          BIENVENIDO A LFP BATTLE              ");
+        System.out.println("===============================================");
+        System.out.println("Desarrollado por Chapin Games");
+        System.out.println("Universidad de San Carlos de Guatemala");
+        System.out.println("Facultad de Ingenieria - Escuela de Ciencias y Sistemas");
+        System.out.println("Lenguajes Formales y de Programacion - Primer Semestre 2025");
+        System.out.println("===============================================");
+        System.out.println("Preparate para vivir una emocionante aventura");
+        System.out.println("En este torneo, los personajes competiran en batallas epicas.");
+        System.out.println("Carga un archivo con tus personajes y descubre quien sera el campeon.");
+        System.out.println("===============================================");
+        System.out.println();
+        
         while (!salir) {
             System.out.println("========== MENU PRINCIPAL =========");
             System.out.println("1. Cargar archivo");
