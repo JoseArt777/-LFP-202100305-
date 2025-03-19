@@ -126,7 +126,20 @@ public class AutomataViewer extends JPanel {
         // Dibujar el texto
         g2d.setColor(Color.BLACK);
         g2d.drawString(symbol, textX, textY);
-    }{
+    }
+    private void drawArrowHead(Graphics2D g2d, int x, int y, double angle) {
+    AffineTransform old = g2d.getTransform();
     
+    g2d.translate(x, y);
+    g2d.rotate(angle);
+    
+    // Dibujar la punta de flecha
+    int[] xPoints = {0, -ARROW_SIZE, -ARROW_SIZE};
+    int[] yPoints = {0, -ARROW_SIZE/2, ARROW_SIZE/2};
+    g2d.fillPolygon(xPoints, yPoints, 3);
+    
+    g2d.setTransform(old);
 }
+}    
+
     

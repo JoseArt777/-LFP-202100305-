@@ -5,8 +5,12 @@
 package com.mycompany.afd_graph;
 
 /**
- *
- * @author iosea
+ * Clase que representa un estado en el autómata.
+ * Cada estado tiene un nombre y una posición (x, y) para la visualización.
+ * Se sobrescriben los métodos equals y hashCode para asegurar que los estados se comparen correctamente.
+ * El método toString se sobrescribe para devolver el nombre del estado.
+ * 
+ * @autor iosea
  */
 public class State {
     private final String name;
@@ -55,6 +59,10 @@ public class State {
 
     @Override
     public String toString() {
-        return name;
+        return "State{" +
+                "name='" + name + '\'' +
+                ", posX=" + posX +
+                ", posY=" + posY +
+                '}';
     }
 }

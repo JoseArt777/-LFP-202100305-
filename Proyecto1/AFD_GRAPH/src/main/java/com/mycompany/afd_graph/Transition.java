@@ -4,9 +4,11 @@
  */
 package com.mycompany.afd_graph;
 
+import java.util.Objects;
+
 /**
  *
- * @author iosea
+ * @autor iosea
  */
 public class Transition {
     private final State fromState;
@@ -33,6 +35,21 @@ public class Transition {
 
     @Override
     public String toString() {
-        return fromState + " --" + symbol + "--> " + toState;
+        return fromState.getName() + " --" + symbol + "--> " + toState.getName();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Transition transition = (Transition) obj;
+        return fromState.equals(transition.fromState) && 
+               toState.equals(transition.toState) &&
+               symbol.equals(transition.symbol);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fromState, toState, symbol);
     }
 }
