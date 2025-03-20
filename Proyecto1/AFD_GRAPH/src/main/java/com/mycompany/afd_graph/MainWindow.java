@@ -4,17 +4,21 @@
  */
 package com.mycompany.afd_graph;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class MainWindow extends JFrame {
-    private final AutomataManager automataManager;
+    private final FileAnalyzer fileAnalyzer;
     private final JComboBox<String> automataSelector;
+    private final AutomataGraph automataGraph;
     private final AutomataViewer automataViewer;
+    private final AutomataManager automataManager;
 
     public MainWindow() {
+        fileAnalyzer = new FileAnalyzer();
+        automataGraph = new AutomataGraph();
         automataManager = new AutomataManager();
         
         // Configuración básica de la ventana
@@ -65,21 +69,16 @@ public class MainWindow extends JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             try {
-                String content = FileHandler.readFile(selectedFile);
-                LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(content);
-                lexicalAnalyzer.analyze();
+                fileAnalyzer.analyzeFile(selectedFile.getAbsolutePath());
                 
                 // Actualizar el gestor de autómatas
-                automataManager.loadAutomata(lexicalAnalyzer);
-                
-                // Actualizar el selector de autómatas
                 updateAutomataSelector();
                 
                 JOptionPane.showMessageDialog(this, 
                     "Archivo analizado correctamente. Se encontraron " + 
-                    automataManager.getAutomataCount() + " autómatas.",
+                    fileAnalyzer.getAutomataMap().size() + " autómatas.",
                     "Análisis Completado", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
+            } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, 
                     "Error al analizar el archivo: " + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -89,57 +88,36 @@ public class MainWindow extends JFrame {
     
     private void updateAutomataSelector() {
         automataSelector.removeAllItems();
-        for (String automataName : automataManager.getAutomataNames()) {
+        for (String automataName : fileAnalyzer.getAutomataMap().keySet()) {
             automataSelector.addItem(automataName);
         }
     }
     
     private void graphSelectedAutomata() {
-        String selectedName = (String) automataSelector.getSelectedItem();
-        if (selectedName != null) {
-            Automaton automaton = automataManager.getAutomaton(selectedName);
-            if (automaton != null) {
-                automataViewer.setAutomaton(automaton);
-                automataViewer.repaint();
-            }
+        String selectedAutomataName = (String) automataSelector.getSelectedItem();
+        if (selectedAutomataName != null) {
+            Automaton automaton = automataManager.getAutomaton(selectedAutomataName);
+            automataGraph.createGraph(automaton);
+            JOptionPane.showMessageDialog(this, "Imagen del autómata generada: automaton.png",
+                    "Generación Completa", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, 
-                "Por favor, seleccione un autómata para graficar.",
-                "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor selecciona un autómata primero.",
+                                          "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }
     
     private void showTokenReport() {
-        if (automataManager.getAutomataCount() > 0) {
-            String report = ReportGenerator.generateTokenReport(automataManager.getLexicalAnalyzer());
-            showReport("Reporte de Tokens", report);
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                "No hay autómatas cargados para generar el reporte.",
-                "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
+        // Implementar la lógica para generar el reporte de tokens
     }
     
     private void showErrorReport() {
-        if (automataManager.getAutomataCount() > 0) {
-            String report = ReportGenerator.generateErrorReport(automataManager.getLexicalAnalyzer());
-            showReport("Reporte de Errores", report);
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                "No hay autómatas cargados para generar el reporte.",
-                "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
+        // Implementar la lógica para generar el reporte de errores léxicos
     }
-    
-    private void showReport(String title, String content) {
-        JFrame reportFrame = new JFrame(title);
-        reportFrame.setSize(600, 400);
-        reportFrame.setLocationRelativeTo(this);
-        
-        JTextArea textArea = new JTextArea(content);
-        textArea.setEditable(false);
-        
-        reportFrame.add(new JScrollPane(textArea));
-        reportFrame.setVisible(true);
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.setVisible(true);
+        });
     }
 }

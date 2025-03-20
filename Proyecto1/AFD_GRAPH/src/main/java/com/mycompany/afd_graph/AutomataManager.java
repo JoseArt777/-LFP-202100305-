@@ -9,7 +9,6 @@ package com.mycompany.afd_graph;
  * @author iosea
  */
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;

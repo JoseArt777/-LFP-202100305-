@@ -107,4 +107,13 @@ public class Automaton {
         }
         return sb.toString();
     }
+    
+    public String getTransition(String state, String symbol) {
+        for (Transition transition : transitions.getOrDefault(new State(state), new HashSet<>())) {
+            if (transition.getSymbol().equals(symbol)) {
+                return transition.getToState().getName();
+            }
+        }
+        return null;
+    }
 }
