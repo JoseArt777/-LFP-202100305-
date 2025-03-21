@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
-    <artifactId>AFD_GRAPH</artifactId>
+    <artifactId>ADF_GRAPH12</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>22</maven.compiler.release>
-    <exec.mainClass>com.mycompany.afd_graph.Main</exec.mainClass>
+        <exec.mainClass>com.mycompany.adf_graph12.ADF_GRAPH12</exec.mainClass>
     </properties>
 </project>
