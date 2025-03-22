@@ -1,7 +1,101 @@
 <html><head><meta charset='UTF-8'><title>Reporte de Tokens</title><style>body{font-family:Arial,sans-serif;margin:20px;background-color:#f8f9fa;}h1{color:#343a40;}.automata{border:1px solid #dee2e6;padding:10px;margin-bottom:20px;border-radius:5px;background-color:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1);}ul{background-color:#fff;padding:15px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,0.1);} li{margin-bottom:8px;}table{width:100%;border-collapse:collapse;margin-bottom:20px;}th,td{border:1px solid #dee2e6;padding:8px;text-align:left;}th{background-color:#e9ecef;}</style></head><body>
 <h1>Reporte de Tokens</h1>
 <div class='automata'>
-<h2>AFD_erroneo</h2>
+<h2>AFD9</h2>
+<p><strong>Descripción:</strong> AFD con estado inicial mal formado</p>
+<h3>Estados</h3>
+<ul>
+<li>q0</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>q1</td>
+<td>q0</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD7</h2>
+<p><strong>Descripción:</strong> AFD con estados mal formados</p>
+<h3>Estados</h3>
+<ul>
+<li></li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD8</h2>
+<p><strong>Descripción:</strong> AFD con alfabeto mal formado</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>""</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>""</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD5</h2>
 <p><strong>Descripción:</strong> AFD con caracter ilegal</p>
 <h3>Estados</h3>
 <ul>
@@ -32,6 +126,43 @@
 </table>
 </div>
 <div class='automata'>
+<h2>AFD6</h2>
+<p><strong>Descripción:</strong> null</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>q1</td>
+<td>q0</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
 <h2>AFD3</h2>
 <p><strong>Descripción:</strong> Ejemplo de autómata de prueba</p>
 <h3>Estados</h3>
@@ -39,6 +170,43 @@
 <li>q0 (inicial)</li>
 <li>q1</li>
 <li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>q1</td>
+<td>q0</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD10</h2>
+<p><strong>Descripción:</strong> AFD con estados finales mal formados</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2</li>
 </ul>
 <h3>Alfabeto</h3>
 <ul>
@@ -102,6 +270,43 @@
 <td>q2</td>
 <td>q2</td>
 <td>q1</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD11</h2>
+<p><strong>Descripción:</strong> AFD con transiciones mal formadas</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
 </tr>
 </table>
 </div>
@@ -223,6 +428,80 @@
 <td>-</td>
 <td>-</td>
 <td>-</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD12</h2>
+<p><strong>Descripción:</strong> AFD con transiciones mal formadas</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>q1</td>
+<td>q0</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
+</tr>
+</table>
+</div>
+<div class='automata'>
+<h2>AFD13</h2>
+<p><strong>Descripción:</strong> AFD con estado final mal formado</p>
+<h3>Estados</h3>
+<ul>
+<li>q0 (inicial)</li>
+<li>q1</li>
+<li>q2 (final)</li>
+</ul>
+<h3>Alfabeto</h3>
+<ul>
+<li>"a"</li>
+<li>"b"</li>
+</ul>
+<h3>Tabla de Transiciones</h3>
+<table>
+<tr><th>Estado</th>
+<th>"a"</th>
+<th>"b"</th>
+</tr>
+<tr>
+<td>q0</td>
+<td>q1</td>
+<td>q0</td>
+</tr>
+<tr>
+<td>q1</td>
+<td>q1</td>
+<td>q2</td>
+</tr>
+<tr>
+<td>q2</td>
+<td>q0</td>
+<td>q2</td>
 </tr>
 </table>
 </div>
