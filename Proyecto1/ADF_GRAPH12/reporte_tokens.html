@@ -1,355 +1,51 @@
 <html><head><meta charset='UTF-8'><title>Reporte de Tokens</title><style>body{font-family:Arial,sans-serif;margin:20px;background-color:#f8f9fa;}h1{color:#343a40;}.automata{border:1px solid #dee2e6;padding:10px;margin-bottom:20px;border-radius:5px;background-color:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1);}ul{background-color:#fff;padding:15px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,0.1);} li{margin-bottom:8px;}table{width:100%;border-collapse:collapse;margin-bottom:20px;}th,td{border:1px solid #dee2e6;padding:8px;text-align:left;}th{background-color:#e9ecef;}</style></head><body>
 <h1>Reporte de Tokens</h1>
 <div class='automata'>
-<h2>AFD9</h2>
-<p><strong>Descripción:</strong> AFD con estado inicial mal formado</p>
+<h2>numero</h2>
+<p><strong>Descripción:</strong> Numeros decimales</p>
 <h3>Estados</h3>
 <ul>
-<li>q0</li>
-<li>q1</li>
-<li>q2 (final)</li>
+<li>S0 (inicial)</li>
+<li>S1 (final)</li>
+<li>S2</li>
+<li>S3 (final)</li>
 </ul>
 <h3>Alfabeto</h3>
 <ul>
-<li>"a"</li>
-<li>"b"</li>
+<li>"digit"</li>
+<li>"."</li>
 </ul>
 <h3>Tabla de Transiciones</h3>
 <table>
 <tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
+<th>"digit"</th>
+<th>"."</th>
 </tr>
 <tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD7</h2>
-<p><strong>Descripción:</strong> AFD con estados mal formados</p>
-<h3>Estados</h3>
-<ul>
-<li></li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td></td>
-<td>-</td>
-<td>-</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD8</h2>
-<p><strong>Descripción:</strong> AFD con alfabeto mal formado</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>""</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>""</th>
-</tr>
-<tr>
-<td>q0</td>
+<td>S0</td>
+<td>S1</td>
 <td>-</td>
 </tr>
 <tr>
-<td>q1</td>
+<td>S1</td>
+<td>S1</td>
+<td>S2</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>S3</td>
 <td>-</td>
 </tr>
 <tr>
-<td>q2</td>
+<td>S3</td>
+<td>S3</td>
 <td>-</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD5</h2>
-<p><strong>Descripción:</strong> AFD con caracter ilegal</p>
-<h3>Estados</h3>
-<ul>
-<li>p0 (inicial)</li>
-<li>p1 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"0"</li>
-<li>"1"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"0"</th>
-<th>"1"</th>
-</tr>
-<tr>
-<td>p0</td>
-<td>p1</td>
-<td>-</td>
-</tr>
-<tr>
-<td>p1</td>
-<td>-</td>
-<td>p0</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD6</h2>
-<p><strong>Descripción:</strong> null</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD3</h2>
-<p><strong>Descripción:</strong> Ejemplo de autómata de prueba</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD10</h2>
-<p><strong>Descripción:</strong> AFD con estados finales mal formados</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD4</h2>
-<p><strong>Descripción:</strong> Ejemplo de AFD con error léxico</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q2</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q2</td>
-<td>q1</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD11</h2>
-<p><strong>Descripción:</strong> AFD con transiciones mal formadas</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
 </tr>
 </table>
 </div>
 <div class='automata'>
 <h2>AFD1</h2>
-<p><strong>Descripción:</strong> Ejemplo de autómata de prueba</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
-</tr>
-<tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
-</tr>
-<tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
-</tr>
-<tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD2</h2>
-<p><strong>Descripción:</strong> Este autómata reconoce cadenas numéricas.</p>
+<p><strong>Descripción:</strong> Cadenas numéricas</p>
 <h3>Estados</h3>
 <ul>
 <li>S0 (inicial) (final)</li>
@@ -432,76 +128,141 @@
 </table>
 </div>
 <div class='automata'>
-<h2>AFD12</h2>
-<p><strong>Descripción:</strong> AFD con transiciones mal formadas</p>
+<h2>AFD2</h2>
+<p><strong>Descripción:</strong> Cadenas alfanuméricas</p>
 <h3>Estados</h3>
 <ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
+<li>S0 (inicial)</li>
+<li>S1</li>
+<li>S2</li>
+<li>S3 (final)</li>
+<li>S4</li>
+<li>S5</li>
+<li>S6 (final)</li>
+<li>S7 (final)</li>
+<li>S8</li>
 </ul>
 <h3>Alfabeto</h3>
 <ul>
 <li>"a"</li>
 <li>"b"</li>
+<li>"c"</li>
+<li>"x"</li>
+<li>"y"</li>
+<li>"z"</li>
+<li>"0"</li>
+<li>"1"</li>
 </ul>
 <h3>Tabla de Transiciones</h3>
 <table>
 <tr><th>Estado</th>
 <th>"a"</th>
 <th>"b"</th>
+<th>"c"</th>
+<th>"x"</th>
+<th>"y"</th>
+<th>"z"</th>
+<th>"0"</th>
+<th>"1"</th>
 </tr>
 <tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
+<td>S0</td>
+<td>S1</td>
+<td>-</td>
+<td>-</td>
+<td>S2</td>
+<td>-</td>
+<td>-</td>
+<td>S3</td>
+<td>S3</td>
 </tr>
 <tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
+<td>S1</td>
+<td>-</td>
+<td>S4</td>
+<td>-</td>
+<td>S2</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
-</tr>
-</table>
-</div>
-<div class='automata'>
-<h2>AFD13</h2>
-<p><strong>Descripción:</strong> AFD con estado final mal formado</p>
-<h3>Estados</h3>
-<ul>
-<li>q0 (inicial)</li>
-<li>q1</li>
-<li>q2 (final)</li>
-</ul>
-<h3>Alfabeto</h3>
-<ul>
-<li>"a"</li>
-<li>"b"</li>
-</ul>
-<h3>Tabla de Transiciones</h3>
-<table>
-<tr><th>Estado</th>
-<th>"a"</th>
-<th>"b"</th>
+<td>S2</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>S5</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
-<td>q0</td>
-<td>q1</td>
-<td>q0</td>
+<td>S3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>S3</td>
+<td>S3</td>
 </tr>
 <tr>
-<td>q1</td>
-<td>q1</td>
-<td>q2</td>
+<td>S4</td>
+<td>-</td>
+<td>-</td>
+<td>S6</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
-<td>q2</td>
-<td>q0</td>
-<td>q2</td>
+<td>S5</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>S7</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>S8</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>-</td>
+<td>S4</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 </tr>
 </table>
 </div>
