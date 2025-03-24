@@ -1,3 +1,0 @@
-com.mycompany.adf_graph12.ADF_GRAPH12$Automata@2f56c370
-com.mycompany.adf_graph12.ADF_GRAPH12$Automata@14fb89bc
-com.mycompany.adf_graph12.ADF_GRAPH12$Automata@386dec34

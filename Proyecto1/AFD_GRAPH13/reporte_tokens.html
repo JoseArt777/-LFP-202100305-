@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Reporte de Tokens</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --border-color: #ddd;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #f0f3f7;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e9f5fe;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .badge-primary {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reporte de Tokens</h1>
+    </header>
+    <div class='container'>
+        <div class='card'>
+            <div class='card-header'>
+                <h2>Listado de Tokens</h2>
+            </div>
+            <div class='card-body'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tipo</th>
+                            <th>Lexema</th>
+                            <th>Línea</th>
+                            <th>Columna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>AFD1</td>
+                            <td>2</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>2</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>2</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class='badge badge-primary'>DESCRIPCION</span></td>
+                            <td>descripcion</td>
+                            <td>3</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>3</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>Cadenas numéricas</td>
+                            <td>3</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>3</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><span class='badge badge-primary'>ESTADOS</span></td>
+                            <td>estados</td>
+                            <td>4</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>4</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>4</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>4</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>4</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>4</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>4</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>4</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>4</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>4</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>53</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>4</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>27</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>58</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>4</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>4</td>
+                            <td>63</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>4</td>
+                            <td>64</td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td><span class='badge badge-primary'>ALFABETO</span></td>
+                            <td>alfabeto</td>
+                            <td>5</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>5</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>5</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>34</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>5</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>36</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>5</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>5</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>5</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>5</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td><span class='badge badge-primary'>INICIAL</span></td>
+                            <td>inicial</td>
+                            <td>6</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>6</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>6</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>44</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>6</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>45</td>
+                            <td><span class='badge badge-primary'>FINALES</span></td>
+                            <td>finales</td>
+                            <td>7</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>46</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>7</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>47</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>7</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>48</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>7</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>50</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>7</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>51</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>7</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>53</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>7</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>55</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>56</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>7</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>57</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>58</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>7</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>7</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>61</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>53</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>7</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>63</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>7</td>
+                            <td>58</td>
+                        </tr>
+                        <tr>
+                            <td>64</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>7</td>
+                            <td>59</td>
+                        </tr>
+                        <tr>
+                            <td>65</td>
+                            <td><span class='badge badge-primary'>TRANSICIONES</span></td>
+                            <td>transiciones</td>
+                            <td>8</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>66</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>8</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>67</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>8</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>68</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>9</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>69</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>9</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>70</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>9</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>71</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>9</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>72</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>9</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>73</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>9</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>74</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>9</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>75</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>9</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>76</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>9</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>77</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>9</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>78</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>9</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>79</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>9</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>80</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>9</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>81</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>9</td>
+                            <td>51</td>
+                        </tr>
+                        <tr>
+                            <td>82</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>9</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>83</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>9</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>84</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>10</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>85</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>10</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>86</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>10</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>87</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>10</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>88</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>10</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>89</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>10</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>90</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>10</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>91</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>10</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>92</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>11</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>93</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>11</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>94</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>11</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>95</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>11</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>96</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>11</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>97</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>11</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>98</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>11</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>99</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>11</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>11</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>11</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>11</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>11</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>104</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>12</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>105</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>12</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>106</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>12</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>107</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>12</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>108</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>12</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>109</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>12</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>110</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>12</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>111</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>12</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>112</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>12</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>113</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>12</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>114</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>12</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>115</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>12</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>116</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>12</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>117</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>12</td>
+                            <td>51</td>
+                        </tr>
+                        <tr>
+                            <td>118</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>12</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>119</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>12</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>120</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>13</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>121</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>13</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>122</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>13</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>13</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>13</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>125</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>13</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>126</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>13</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>127</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>13</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>13</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>129</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>13</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>130</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>13</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>131</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>13</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>132</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>14</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>133</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>14</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>134</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>14</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>135</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>14</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>136</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>14</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>137</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>14</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>138</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>14</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>139</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>14</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>140</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>15</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>141</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>15</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>142</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>15</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>143</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>15</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>144</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>15</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>145</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>15</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>146</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>15</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>147</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>15</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>148</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>16</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>149</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>16</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>150</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>16</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>151</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>16</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>152</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>16</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>153</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>16</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>154</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>16</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>155</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>156</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>16</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>157</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>16</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>158</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>16</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>159</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>3</td>
+                            <td>16</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>160</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>16</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>161</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>16</td>
+                            <td>51</td>
+                        </tr>
+                        <tr>
+                            <td>162</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>16</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>163</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>17</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>164</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>18</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>165</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>18</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>166</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>AFD2</td>
+                            <td>19</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>167</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>19</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>168</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>19</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>169</td>
+                            <td><span class='badge badge-primary'>DESCRIPCION</span></td>
+                            <td>descripcion</td>
+                            <td>20</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>170</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>20</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>171</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>Cadenas alfanuméricas</td>
+                            <td>20</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>172</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>20</td>
+                            <td>46</td>
+                        </tr>
+                        <tr>
+                            <td>173</td>
+                            <td><span class='badge badge-primary'>ESTADOS</span></td>
+                            <td>estados</td>
+                            <td>21</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>174</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>21</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>175</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>21</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>176</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>21</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>177</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>178</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>21</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>179</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>180</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>21</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>181</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>182</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>21</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>183</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>184</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>21</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>185</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>186</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>21</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>187</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>188</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>21</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>189</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>53</td>
+                        </tr>
+                        <tr>
+                            <td>190</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>21</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>191</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>58</td>
+                        </tr>
+                        <tr>
+                            <td>192</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>21</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>193</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>21</td>
+                            <td>63</td>
+                        </tr>
+                        <tr>
+                            <td>194</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>21</td>
+                            <td>64</td>
+                        </tr>
+                        <tr>
+                            <td>195</td>
+                            <td><span class='badge badge-primary'>ALFABETO</span></td>
+                            <td>alfabeto</td>
+                            <td>22</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>196</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>22</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>197</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>22</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>198</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>a</td>
+                            <td>22</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>199</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>200</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>b</td>
+                            <td>22</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>201</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>202</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>c</td>
+                            <td>22</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>203</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>204</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>x</td>
+                            <td>22</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>205</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>206</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>y</td>
+                            <td>22</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>207</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>44</td>
+                        </tr>
+                        <tr>
+                            <td>208</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>z</td>
+                            <td>22</td>
+                            <td>47</td>
+                        </tr>
+                        <tr>
+                            <td>209</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>49</td>
+                        </tr>
+                        <tr>
+                            <td>210</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>0</td>
+                            <td>22</td>
+                            <td>52</td>
+                        </tr>
+                        <tr>
+                            <td>211</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>212</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>22</td>
+                            <td>57</td>
+                        </tr>
+                        <tr>
+                            <td>213</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>22</td>
+                            <td>59</td>
+                        </tr>
+                        <tr>
+                            <td>214</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>22</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>215</td>
+                            <td><span class='badge badge-primary'>INICIAL</span></td>
+                            <td>inicial</td>
+                            <td>23</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>216</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>23</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>217</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>23</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>218</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>23</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>219</td>
+                            <td><span class='badge badge-primary'>FINALES</span></td>
+                            <td>finales</td>
+                            <td>24</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>220</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>24</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>221</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>24</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>222</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>24</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>223</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>24</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>224</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>24</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>225</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>24</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>226</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>24</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>227</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>24</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>228</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>24</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>229</td>
+                            <td><span class='badge badge-primary'>TRANSICIONES</span></td>
+                            <td>transiciones</td>
+                            <td>25</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>230</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>25</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>231</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>25</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>232</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>26</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>233</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>26</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>234</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>26</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>235</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>a</td>
+                            <td>26</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>236</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>26</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>237</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>26</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>238</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>26</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>239</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>x</td>
+                            <td>26</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>240</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>26</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>241</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>26</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>242</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>26</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>243</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>0</td>
+                            <td>26</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>244</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>26</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>245</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>26</td>
+                            <td>51</td>
+                        </tr>
+                        <tr>
+                            <td>246</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>26</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>247</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>26</td>
+                            <td>57</td>
+                        </tr>
+                        <tr>
+                            <td>248</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>26</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>249</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>26</td>
+                            <td>63</td>
+                        </tr>
+                        <tr>
+                            <td>250</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>26</td>
+                            <td>66</td>
+                        </tr>
+                        <tr>
+                            <td>251</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>26</td>
+                            <td>67</td>
+                        </tr>
+                        <tr>
+                            <td>252</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>27</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>253</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>27</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>254</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>27</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>255</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>b</td>
+                            <td>27</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>256</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>27</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>257</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>27</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>258</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>27</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>259</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>x</td>
+                            <td>27</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>260</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>27</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>261</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>27</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>262</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>27</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>263</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>27</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>264</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>28</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>265</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>28</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>266</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>28</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>267</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>y</td>
+                            <td>28</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>268</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>28</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>269</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>28</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>270</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>28</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>271</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>28</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>272</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>29</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>273</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>29</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>274</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>29</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>275</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>0</td>
+                            <td>29</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>276</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>29</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>277</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>29</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>278</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>29</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>279</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>1</td>
+                            <td>29</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>280</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>29</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>281</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>29</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>282</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>29</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>283</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>29</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>284</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>30</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>285</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>30</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>286</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>30</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>287</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>c</td>
+                            <td>30</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>288</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>30</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>289</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>30</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>290</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>30</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>291</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>30</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>292</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S5</td>
+                            <td>31</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>293</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>31</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>294</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>31</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>295</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>z</td>
+                            <td>31</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>296</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>31</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>297</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>31</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>298</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>31</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>299</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>31</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>300</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S6</td>
+                            <td>32</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>301</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>32</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>302</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>32</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>303</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>a</td>
+                            <td>32</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>304</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>32</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>305</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S8</td>
+                            <td>32</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>306</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>32</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>307</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>32</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>308</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S7</td>
+                            <td>33</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>309</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>33</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>310</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>33</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>311</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>b</td>
+                            <td>33</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>312</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>33</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>313</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S4</td>
+                            <td>33</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>314</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>33</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>315</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>34</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>316</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>35</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>317</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>35</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>318</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>numero</td>
+                            <td>36</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>319</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>36</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>320</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>36</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>321</td>
+                            <td><span class='badge badge-primary'>DESCRIPCION</span></td>
+                            <td>descripcion</td>
+                            <td>37</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>322</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>37</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>323</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>Numeros decimales</td>
+                            <td>37</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>324</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>37</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>325</td>
+                            <td><span class='badge badge-primary'>ESTADOS</span></td>
+                            <td>estados</td>
+                            <td>38</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>326</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>38</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>327</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>38</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>328</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>38</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>329</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>38</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>330</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>38</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>331</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>38</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>332</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>38</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>333</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>38</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>334</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>38</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>335</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>38</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>336</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>38</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>337</td>
+                            <td><span class='badge badge-primary'>ALFABETO</span></td>
+                            <td>alfabeto</td>
+                            <td>39</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>338</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>39</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>339</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>39</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>340</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>digit</td>
+                            <td>39</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>341</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>39</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>342</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>.</td>
+                            <td>39</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>343</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>39</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>344</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>39</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>345</td>
+                            <td><span class='badge badge-primary'>INICIAL</span></td>
+                            <td>inicial</td>
+                            <td>40</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>346</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>40</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>347</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>40</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>348</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>40</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>349</td>
+                            <td><span class='badge badge-primary'>FINALES</span></td>
+                            <td>finales</td>
+                            <td>41</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>350</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>41</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>351</td>
+                            <td><span class='badge badge-primary'>CORCHETE_ABRE</span></td>
+                            <td>[</td>
+                            <td>41</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>352</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>41</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>353</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>41</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>354</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>41</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>355</td>
+                            <td><span class='badge badge-primary'>CORCHETE_CIERRA</span></td>
+                            <td>]</td>
+                            <td>41</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>356</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>41</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>357</td>
+                            <td><span class='badge badge-primary'>TRANSICIONES</span></td>
+                            <td>transiciones</td>
+                            <td>42</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>358</td>
+                            <td><span class='badge badge-primary'>DOS_PUNTOS</span></td>
+                            <td>:</td>
+                            <td>42</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>359</td>
+                            <td><span class='badge badge-primary'>LLAVE_ABRE</span></td>
+                            <td>{</td>
+                            <td>42</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>360</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S0</td>
+                            <td>43</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>361</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>43</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>362</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>43</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>363</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>digit</td>
+                            <td>43</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>364</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>43</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>365</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>43</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>366</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>43</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>367</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>43</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>368</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>44</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>369</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>44</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>370</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>44</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>371</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>digit</td>
+                            <td>44</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>372</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>44</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>373</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S1</td>
+                            <td>44</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>374</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>44</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>375</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>.</td>
+                            <td>44</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>376</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>44</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>377</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>44</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>378</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>44</td>
+                            <td>46</td>
+                        </tr>
+                        <tr>
+                            <td>379</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>44</td>
+                            <td>47</td>
+                        </tr>
+                        <tr>
+                            <td>380</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S2</td>
+                            <td>45</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>381</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>45</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>382</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>45</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>383</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>digit</td>
+                            <td>45</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>384</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>45</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>385</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>45</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>386</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>45</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>387</td>
+                            <td><span class='badge badge-primary'>COMA</span></td>
+                            <td>,</td>
+                            <td>45</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>388</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>46</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>389</td>
+                            <td><span class='badge badge-primary'>IGUAL</span></td>
+                            <td>=</td>
+                            <td>46</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>390</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_ABRE</span></td>
+                            <td>(</td>
+                            <td>46</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>391</td>
+                            <td><span class='badge badge-primary'>CADENA</span></td>
+                            <td>digit</td>
+                            <td>46</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>392</td>
+                            <td><span class='badge badge-primary'>FLECHA</span></td>
+                            <td>-></td>
+                            <td>46</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>393</td>
+                            <td><span class='badge badge-primary'>IDENTIFICADOR</span></td>
+                            <td>S3</td>
+                            <td>46</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>394</td>
+                            <td><span class='badge badge-primary'>PARENTESIS_CIERRA</span></td>
+                            <td>)</td>
+                            <td>46</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>395</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>47</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>396</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>48</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>397</td>
+                            <td><span class='badge badge-primary'>LLAVE_CIERRA</span></td>
+                            <td>}</td>
+                            <td>49</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='footer'>
+            <p>AFDGraph | Generado: 23/03/2025 21:35:27</p>
+        </div>
+    </div>
+</body>
+</html>

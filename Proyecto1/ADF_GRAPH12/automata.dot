@@ -1,5 +1,0 @@
-digraph Automata {
-rankdir=LR;
-node [shape = doublecircle]; ;
-node [shape = circle];
-}

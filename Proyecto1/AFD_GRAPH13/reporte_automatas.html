@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Reporte de Autómatas</title>
+    <style>
+        :root {
+            --primary-color: #6b5b95;
+            --secondary-color: #4b3f6b;
+            --accent-color: #feb236;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f8f7fc;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .automata-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .automata {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .automata:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .automata-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            position: relative;
+        }
+        .automata-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+        .automata-body {
+            padding: 20px;
+        }
+        .info-group {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .info-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .info-label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+        .info-value {
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-color);
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            margin: 2px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .transiciones-list {
+            list-style-type: none;
+        }
+        .transicion-item {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            background-color: #f0f4f8;
+            border-left: 3px solid var(--accent-color);
+        }
+        .transicion-item span {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reporte de Autómatas</h1>
+    </header>
+    <div class='container'>
+        <div class='automata-container'>
+            <div class='automata'>
+                <div class='automata-header'>
+                    <h2>numero</h2>
+                </div>
+                <div class='automata-body'>
+                    <div class='info-group'>
+                        <span class='info-label'>Descripción</span>
+                        <div class='info-value'>Numeros decimales</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados</span>
+                        <div class='info-value'>
+                            <span class='tag'>S0</span>
+                            <span class='tag'>S1</span>
+                            <span class='tag'>S2</span>
+                            <span class='tag'>S3</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Alfabeto</span>
+                        <div class='info-value'>
+                            <span class='tag'>digit</span>
+                            <span class='tag'>.</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estado Inicial</span>
+                        <div class='info-value'>S0</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados Finales</span>
+                        <div class='info-value'>
+                            <span class='tag'>S1</span>
+                            <span class='tag'>S3</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Transiciones</span>
+                        <ul class='transiciones-list'>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(digit)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(digit)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S1</span> --(.)--> <span>S2</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S1</span> --(digit)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S2</span> --(digit)--> <span>S3</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='automata'>
+                <div class='automata-header'>
+                    <h2>AFD1</h2>
+                </div>
+                <div class='automata-body'>
+                    <div class='info-group'>
+                        <span class='info-label'>Descripción</span>
+                        <div class='info-value'>Cadenas numéricas</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados</span>
+                        <div class='info-value'>
+                            <span class='tag'>S0</span>
+                            <span class='tag'>S1</span>
+                            <span class='tag'>S2</span>
+                            <span class='tag'>S3</span>
+                            <span class='tag'>S4</span>
+                            <span class='tag'>S5</span>
+                            <span class='tag'>S6</span>
+                            <span class='tag'>S7</span>
+                            <span class='tag'>S8</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Alfabeto</span>
+                        <div class='info-value'>
+                            <span class='tag'>1</span>
+                            <span class='tag'>2</span>
+                            <span class='tag'>3</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estado Inicial</span>
+                        <div class='info-value'>S0</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados Finales</span>
+                        <div class='info-value'>
+                            <span class='tag'>S0</span>
+                            <span class='tag'>S1</span>
+                            <span class='tag'>S2</span>
+                            <span class='tag'>S3</span>
+                            <span class='tag'>S5</span>
+                            <span class='tag'>S6</span>
+                            <span class='tag'>S7</span>
+                            <span class='tag'>S8</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Transiciones</span>
+                        <ul class='transiciones-list'>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(1)--> <span>S5</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(2)--> <span>S6</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(3)--> <span>S7</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S4</span> --(1)--> <span>S8</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S4</span> --(3)--> <span>S4</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S5</span> --(1)--> <span>S5</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S6</span> --(2)--> <span>S6</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S7</span> --(1)--> <span>S8</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S7</span> --(2)--> <span>S6</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S7</span> --(3)--> <span>S7</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(1)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(2)--> <span>S2</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(3)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S1</span> --(2)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S2</span> --(2)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S2</span> --(3)--> <span>S4</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='automata'>
+                <div class='automata-header'>
+                    <h2>AFD2</h2>
+                </div>
+                <div class='automata-body'>
+                    <div class='info-group'>
+                        <span class='info-label'>Descripción</span>
+                        <div class='info-value'>Cadenas alfanuméricas</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados</span>
+                        <div class='info-value'>
+                            <span class='tag'>S0</span>
+                            <span class='tag'>S1</span>
+                            <span class='tag'>S2</span>
+                            <span class='tag'>S3</span>
+                            <span class='tag'>S4</span>
+                            <span class='tag'>S5</span>
+                            <span class='tag'>S6</span>
+                            <span class='tag'>S7</span>
+                            <span class='tag'>S8</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Alfabeto</span>
+                        <div class='info-value'>
+                            <span class='tag'>a</span>
+                            <span class='tag'>b</span>
+                            <span class='tag'>c</span>
+                            <span class='tag'>x</span>
+                            <span class='tag'>y</span>
+                            <span class='tag'>z</span>
+                            <span class='tag'>0</span>
+                            <span class='tag'>1</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estado Inicial</span>
+                        <div class='info-value'>S0</div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Estados Finales</span>
+                        <div class='info-value'>
+                            <span class='tag'>S3</span>
+                            <span class='tag'>S6</span>
+                            <span class='tag'>S7</span>
+                        </div>
+                    </div>
+                    <div class='info-group'>
+                        <span class='info-label'>Transiciones</span>
+                        <ul class='transiciones-list'>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(0)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S3</span> --(1)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S4</span> --(c)--> <span>S6</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S5</span> --(z)--> <span>S7</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S6</span> --(a)--> <span>S8</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S7</span> --(b)--> <span>S4</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(0)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(a)--> <span>S1</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(1)--> <span>S3</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S0</span> --(x)--> <span>S2</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S1</span> --(b)--> <span>S4</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S1</span> --(x)--> <span>S2</span>
+                            </li>
+                            <li class='transicion-item'>
+                                <span>S2</span> --(y)--> <span>S5</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='footer'>
+            <p>AFDGraph | Generado: 23/03/2025 21:35:27</p>
+        </div>
+    </div>
+</body>
+</html>
