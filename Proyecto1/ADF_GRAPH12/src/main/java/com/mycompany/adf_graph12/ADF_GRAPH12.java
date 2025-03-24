@@ -252,11 +252,10 @@ public class ADF_GRAPH12 extends JFrame {
     setMinimumSize(new Dimension(1000, 600));
     setVisible(true);
 }
-
-  private void analizarArchivo(JComboBox<String> selectAutomata) {
+private void analizarArchivo(JComboBox<String> selectAutomata) {
     JFileChooser fileChooser = new JFileChooser();
     
-    // filtra los archivos .lfp
+    // Filter for .lfp files
     FileNameExtensionFilter filter = new FileNameExtensionFilter(
         "Archivos LFP (*.lfp)", "lfp");
     fileChooser.setFileFilter(filter);
@@ -266,286 +265,359 @@ public class ADF_GRAPH12 extends JFrame {
     if (result == JFileChooser.APPROVE_OPTION) {
         File file = fileChooser.getSelectedFile();
         archivoArea.setText("");
-        erroresLexicos.clear(); // Limpia errores anteriores
-        automatas.clear(); // Limpia autómatas anteriores
-        selectAutomata.removeAllItems(); // Limpia ComboBox
+        erroresLexicos.clear(); // Clear previous errors
+        automatas.clear(); // Clear previous automata
+        selectAutomata.removeAllItems(); // Clear ComboBox
         
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        try (FileInputStream fis = new FileInputStream(file)) {
+            // Variables for file content display
+            StringBuilder fileContent = new StringBuilder();
+            
+            // Variables for lexical analysis
             int c;
-            Automata automataActual = null;
+            int estado = 0;
             int lineaActual = 1;
-            int charActual = 1; // Comienza en 1 
-            StringBuilder currentLine = new StringBuilder();
-            StringBuilder fileContent = new StringBuilder(); // muestra en el area de texto
+            int charActual = 1;
+            StringBuilder lexema = new StringBuilder();
+            
+            // Variables to store automata information
+            Automata automataActual = null;
+            String seccionActual = "";
+            String estadoOrigen = "";
+            String simboloTransicion = "";
+            String estadoDestino = "";
+            boolean dentroComillas = false;
+            boolean dentroCorchetes = false;
+            boolean dentroParentesis = false;
             boolean dentroTransiciones = false;
-            boolean transicionesAbiertas = false;
-            int llavesCerradas = 0;
-
-            while ((c = br.read()) != -1) {
+            int llaves = 0;
+            ArrayList<String> valoresTemp = new ArrayList<>();
+            
+            // Process file character by character
+            while ((c = fis.read()) != -1) {
                 char ch = (char) c;
-                fileContent.append(ch); 
-                currentLine.append(ch);
-
-                if (ch == '\n') {
-                    String line = currentLine.toString().trim();
-                    
-                    // Procesa 
-                    if (!line.isEmpty()) {
-                        // Verificar si comienza con nombre de autómata
-                        if (line.contains(":") && !line.startsWith("descripcion") && 
-                            !line.startsWith("estados") && !line.startsWith("alfabeto") && 
-                            !line.startsWith("inicial") && !line.startsWith("finales") && 
-                            !line.startsWith("transiciones") && !dentroTransiciones) {
-                            
-                            String nombre = line.split(":")[0].trim();
-                            
-                            // Verificar que el nombre del autómata no comience con números
-                            if (nombre.matches("^\\d.*")) {
-                                // Find the position of the first digit in the name
-                                int errorPos = line.indexOf(nombre);
-                                if (errorPos < 0) errorPos = 0; // Fallback if name not found
+                fileContent.append(ch);
+                
+                // Process character according to current state
+                switch (estado) {
+                    case 0: // Initial state
+                        if (Character.isLetter(ch)) {
+                            lexema.append(ch);
+                            estado = 1; // Possible identifier or keyword
+                        } else if (ch == ':') {
+                            // Process colon
+                            if (lexema.length() > 0) {
+                                String token = lexema.toString().trim();
                                 
-                                erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                    " carácter " + errorPos + ": El nombre del autómata '" + nombre + 
-                                    "' no debe comenzar con un número");
-                            }
-                            
-                            automataActual = new Automata(nombre);
-                            automatas.put(nombre, automataActual);
-                            selectAutomata.addItem(nombre);
-                            
-                        } else if (automataActual != null) {
-                            try {
-                                if (line.startsWith("descripcion")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "descripcion".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'descripcion'");
-                                    } else {
-                                        String valor = line.split(":", 2)[1].trim();
-                                        if (!valor.startsWith("\"") || (!valor.endsWith("\"") && !valor.endsWith("\","))) {
-                                            int errorPos = line.indexOf(":") + 2;
-                                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                " carácter " + errorPos + ": La descripción debe estar entre comillas");
-                                        } else {
-                                            automataActual.descripcion = valor.replace("\"", "").replace(",", "").trim();
-                                        }
-                                    }
-                                } else if (line.startsWith("estados")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "estados".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'estados'");
-                                    } else if (!line.contains("[")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de apertura '[' en la lista de estados");
-                                    } else if (!line.contains("]")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de cierre ']' en la lista de estados");
-                                    } else {
-                                        String estados = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
-                                        automataActual.estados.addAll(Arrays.asList(estados.split(",\\s*")));
-                                    }
-                                } else if (line.startsWith("alfabeto")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "alfabeto".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'alfabeto'");
-                                    } else if (!line.contains("[")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de apertura '[' en el alfabeto");
-                                    } else if (!line.contains("]")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de cierre ']' en el alfabeto");
-                                    } else {
-                                        String alfabeto = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
-                                        // Verificar que todos los símbolos estén entre comillas
-                                        String[] simbolos = alfabeto.split(",\\s*");
-                                        for (String simbolo : simbolos) {
-                                            if (!simbolo.startsWith("\"") || !simbolo.endsWith("\"")) {
-                                                int errorPos = line.indexOf(simbolo, line.indexOf("["));
-                                                erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                    " carácter " + errorPos + ": Símbolo '" + simbolo + 
-                                                    "' debe estar entre comillas");
-                                            }
-                                        }
-                                        
-                                        // Agregar símbolos al autómata
-                                        automataActual.alfabeto.addAll(Arrays.asList(alfabeto.replace("\"", "").split(",\\s*")));
-                                    }
-                                } else if (line.startsWith("inicial")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "inicial".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'inicial'");
-                                    } else {
-                                        automataActual.estadoInicial = line.split(":", 2)[1].replace(",", "").trim();
-                                    }
-                                } else if (line.startsWith("finales")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "finales".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'finales'");
-                                    } else if (!line.contains("[")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de apertura '[' en estados finales");
-                                    } else if (!line.contains("]")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta corchete de cierre ']' en estados finales");
-                                    } else {
-                                        String finales = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
-                                        automataActual.estadosFinales.addAll(Arrays.asList(finales.split(",\\s*")));
-                                    }
-                                } else if (line.startsWith("transiciones")) {
-                                    if (!line.contains(":")) {
-                                        int errorPos = "transiciones".length() + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta el símbolo ':' después de 'transiciones'");
-                                    } else if (!line.contains("{")) {
-                                        int errorPos = line.indexOf(":") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Las transiciones deben estar entre llaves {}");
-                                    } else {
-                                        dentroTransiciones = true;
-                                        transicionesAbiertas = true;
-                                    }
-                                } else if (dentroTransiciones && line.contains("=")) {
-                                    // Procesando líneas de transiciones
-                                    String estadoOrigen = line.split("=")[0].trim();
+                                // Check if it's a new automaton
+                                if (!token.equals("descripcion") && !token.equals("estados") && 
+                                    !token.equals("alfabeto") && !token.equals("inicial") && 
+                                    !token.equals("finales") && !token.equals("transiciones")) {
                                     
-                                    // Verifica que el estado origen exista
-                                    if (!automataActual.estados.contains(estadoOrigen)) {
-                                        int errorPos = line.indexOf(estadoOrigen);
+                                    // Verify automaton name doesn't start with numbers
+                                    if (Character.isDigit(token.charAt(0))) {
                                         erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Estado origen '" + estadoOrigen + "' no definido");
+                                            " carácter " + (charActual - token.length()) + 
+                                            ": El nombre del autómata '" + token + 
+                                            "' no debe comenzar con un número");
                                     }
                                     
-                                    // Verifica paréntesis de apertura
-                                    if (!line.contains("(")) {
-                                        int errorPos = line.indexOf("=") + 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta paréntesis de apertura '(' en las transiciones");
-                                    }
-                                    
-                                    // Verifica paréntesis de cierre
-                                    if (!line.contains(")")) {
-                                        int errorPos = line.length() - 1;
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + errorPos + ": Falta paréntesis de cierre ')' en las transiciones");
-                                    } else {
-                                        try {
-                                            String transiciones = line.substring(line.indexOf("(") + 1, line.lastIndexOf(")"));
-                                            String[] trans = transiciones.split(",\\s*");
-                                            HashMap<String, String> mapaTransiciones = new HashMap<>();
-                                            
-                                            for (String t : trans) {
-                                                // Verificar flechas correctas
-                                                if (t.contains("->>") || t.contains("->->") || t.contains("-<") || 
-                                                    t.contains("<-") || !t.contains("->")) {
-                                                    int errorPos = line.indexOf(t, line.indexOf("("));
-                                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                        " carácter " + errorPos + ": Formato incorrecto de flecha en transición: " + t);
-                                                    continue;
-                                                }
-                                                
-                                                String[] partes = t.split("->");
-                                                if (partes.length != 2) {
-                                                    int errorPos = line.indexOf(t, line.indexOf("("));
-                                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                        " carácter " + errorPos + ": Formato incorrecto en transición: " + t);
-                                                    continue;
-                                                }
-                                                
-                                                String simbolo = partes[0].trim().replace("\"", "");
-                                                String destino = partes[1].trim();
-                                                
-                                                // Verificar comillas en símbolos
-                                                if (!t.contains("\"")) {
-                                                    int errorPos = line.indexOf(t, line.indexOf("("));
-                                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                        " carácter " + errorPos + ": Símbolo debe estar entre comillas en: " + t);
-                                                }
-                                                
-                                                // Verifica si el símbolo está en el alfabeto
-                                                if (!automataActual.alfabeto.contains(simbolo)) {
-                                                    int errorPos = line.indexOf(simbolo, line.indexOf("("));
-                                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                        " carácter " + errorPos + ": Símbolo '" + simbolo + "' no definido en el alfabeto");
-                                                }
-                                                
-                                                // Verificar que el estado destino exista
-                                                if (!automataActual.estados.contains(destino)) {
-                                                    int errorPos = line.indexOf(destino, line.indexOf("->"));
-                                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                        " carácter " + errorPos + ": Estado destino '" + destino + "' no definido");
-                                                }
-                                                
-                                                mapaTransiciones.put(simbolo, destino);
-                                            }
-                                            automataActual.transiciones.put(estadoOrigen, mapaTransiciones);
-                                        } catch (StringIndexOutOfBoundsException e) {
-                                            // Si hay error en el formato de los paréntesis
-                                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                                ": Problema con los paréntesis en las transiciones");
-                                        }
-                                    }
-                                } else if (line.equals("}") && dentroTransiciones) {
-                                    // Fin de las transiciones
-                                    dentroTransiciones = false;
-                                    llavesCerradas++;
-                                    
-                                    if (llavesCerradas == 2) {
-                                        // Fin del autómata
-                                        automataActual = null;
-                                        llavesCerradas = 0;
-                                    }
-                                } else if (line.equals("}") && !dentroTransiciones) {
-                                    // Fin del autómata
-                                    llavesCerradas++;
-                                    if (llavesCerradas == 2) {
-                                        automataActual = null;
-                                        llavesCerradas = 0;
-                                    }
-                                } else if (!line.startsWith("{") && !line.isEmpty()) {
-                                    if (line.startsWith("final:")) {
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter 0: Uso incorrecto de 'final:' en lugar de 'finales:'");
-                                    } else {
-                                        // Get the position of the first character in the current line
-                                        int errorPos = fileContent.toString().lastIndexOf(line);
-                                        int charPosition = errorPos - fileContent.toString().lastIndexOf('\n', errorPos) - 1;
-                                        if (charPosition < 0) charPosition = 0; // Handle first line
-                                        
-                                        erroresLexicos.add("Error léxico en línea " + lineaActual + 
-                                            " carácter " + charPosition + ": Línea no reconocida: " + line);
-                                    }
+                                    automataActual = new Automata(token);
+                                    automatas.put(token, automataActual);
+                                    selectAutomata.addItem(token);
+                                    seccionActual = "";
+                                } else {
+                                    // It's a section keyword
+                                    seccionActual = token;
                                 }
-                            } catch (Exception ex) {
-                                erroresLexicos.add("Error léxico en línea " + lineaActual + ": " + 
-                                    line + " - " + ex.getMessage());
                             }
+                            lexema.setLength(0);
+                            estado = 2; // After colon
+                        } else if (ch == '=') {
+                            if (lexema.length() > 0 && dentroTransiciones) {
+                                estadoOrigen = lexema.toString().trim();
+                                // Verify the origin state exists
+                                if (automataActual != null && !automataActual.estados.contains(estadoOrigen)) {
+                                    erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                        " carácter " + (charActual - estadoOrigen.length()) + 
+                                        ": Estado origen '" + estadoOrigen + "' no definido");
+                                }
+                            }
+                            lexema.setLength(0);
+                            estado = 8; // Transition definition
+                        } else if (ch == '{') {
+                            llaves++;
+                            if (seccionActual.equals("transiciones")) {
+                                dentroTransiciones = true;
+                            }
+                            lexema.setLength(0);
+                        } else if (ch == '}') {
+                            llaves--;
+                            if (llaves == 0 && dentroTransiciones) {
+                                dentroTransiciones = false;
+                            }
+                            if (llaves == 0) {
+                                automataActual = null; // End of automaton
+                            }
+                            lexema.setLength(0);
+                        } else if (ch == '[') {
+                            dentroCorchetes = true;
+                            valoresTemp.clear();
+                            lexema.setLength(0);
+                            estado = 3; // Inside brackets
+                        } else if (ch == '"') {
+                            dentroComillas = true;
+                            lexema.setLength(0);
+                            estado = 4; // Inside quotes
+                        } else if (ch == '(') {
+                            dentroParentesis = true;
+                            lexema.setLength(0);
+                            estado = 9; // Inside parentheses for transitions
+                        } else if (ch == ',') {
+                            // Separator, ignore
+                            lexema.setLength(0);
+                        } else if (ch == '\n') {
+                            lineaActual++;
+                            charActual = 0;
+                            lexema.setLength(0);
+                        } else if (!Character.isWhitespace(ch)) {
+                            lexema.append(ch);
                         }
-                    }
-                    
-                    // Prepara para la siguiente línea
-                    lineaActual++;
-                    charActual = 1;
-                    currentLine.setLength(0);
-                } else {
-                    charActual++;
+                        break;
+                        
+                    case 1: // Reading identifier or keyword
+                        if (Character.isLetterOrDigit(ch) || ch == '_') {
+                            lexema.append(ch);
+                        } else {
+                            // Reprocess current character in state 0
+                            estado = 0;
+                            continue;
+                        }
+                        break;
+                        
+                    case 2: // After colon
+                        if (ch == '"') {
+                            dentroComillas = true;
+                            lexema.setLength(0);
+                            estado = 4; // Inside quotes
+                        } else if (ch == '[') {
+                            dentroCorchetes = true;
+                            valoresTemp.clear();
+                            lexema.setLength(0);
+                            estado = 3; // Inside brackets
+                        } else if (ch == '{') {
+                            llaves++;
+                            if (seccionActual.equals("transiciones")) {
+                                dentroTransiciones = true;
+                            }
+                            estado = 0;
+                        } else if (!Character.isWhitespace(ch)) {
+                            // For single values like 'inicial: q0'
+                            lexema.append(ch);
+                            estado = 5; // Reading single value
+                        }
+                        break;
+                        
+                    case 3: // Inside brackets
+                        if (ch == '"') {
+                            dentroComillas = true;
+                            lexema.setLength(0);
+                            estado = 6; // Quote inside brackets
+                        } else if (ch == ']') {
+                            dentroCorchetes = false;
+                            
+                            // Process collected values according to current section
+                            if (seccionActual.equals("estados") && automataActual != null) {
+                                automataActual.estados.addAll(valoresTemp);
+                            } else if (seccionActual.equals("alfabeto") && automataActual != null) {
+                                automataActual.alfabeto.addAll(valoresTemp);
+                            } else if (seccionActual.equals("finales") && automataActual != null) {
+                                automataActual.estadosFinales.addAll(valoresTemp);
+                            }
+                            
+                            valoresTemp.clear();
+                            estado = 0;
+                        } else if (ch == ',') {
+                            if (lexema.length() > 0) {
+                                valoresTemp.add(lexema.toString().trim());
+                                lexema.setLength(0);
+                            }
+                        } else if (!Character.isWhitespace(ch)) {
+                            lexema.append(ch);
+                        }
+                        break;
+                        
+                    case 4: // Inside quotes (for description)
+                        if (ch == '"') {
+                            dentroComillas = false;
+                            
+                            if (seccionActual.equals("descripcion") && automataActual != null) {
+                                automataActual.descripcion = lexema.toString();
+                            }
+                            
+                            lexema.setLength(0);
+                            estado = 0;
+                        } else {
+                            lexema.append(ch);
+                        }
+                        break;
+                        
+                    case 5: // Reading single value (for inicial)
+                        if (ch == ',' || ch == '\n') {
+                            if (seccionActual.equals("inicial") && automataActual != null) {
+                                automataActual.estadoInicial = lexema.toString().trim();
+                            }
+                            
+                            lexema.setLength(0);
+                            estado = 0;
+                            
+                            if (ch == '\n') {
+                                lineaActual++;
+                                charActual = 0;
+                            }
+                        } else if (!Character.isWhitespace(ch)) {
+                            lexema.append(ch);
+                        }
+                        break;
+                        
+                    case 6: // Quote inside brackets (for alfabeto)
+                        if (ch == '"') {
+                            dentroComillas = false;
+                            valoresTemp.add(lexema.toString());
+                            lexema.setLength(0);
+                            estado = 7; // After quote in brackets
+                        } else {
+                            lexema.append(ch);
+                        }
+                        break;
+                        
+                    case 7: // After quote in brackets
+                        if (ch == ',') {
+                            estado = 3; // Back to inside brackets
+                        } else if (ch == ']') {
+                            dentroCorchetes = false;
+                            
+                            // Process collected values according to current section
+                            if (seccionActual.equals("estados") && automataActual != null) {
+                                automataActual.estados.addAll(valoresTemp);
+                            } else if (seccionActual.equals("alfabeto") && automataActual != null) {
+                                automataActual.alfabeto.addAll(valoresTemp);
+                            } else if (seccionActual.equals("finales") && automataActual != null) {
+                                automataActual.estadosFinales.addAll(valoresTemp);
+                            }
+                            
+                            valoresTemp.clear();
+                            estado = 0;
+                        }
+                        break;
+                        
+                    case 8: // Transition definition (after =)
+                        if (ch == '(') {
+                            dentroParentesis = true;
+                            lexema.setLength(0);
+                            estado = 9; // Inside parentheses for transitions
+                        } else if (!Character.isWhitespace(ch)) {
+                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                " carácter " + charActual + 
+                                ": Se esperaba '(' después de '='");
+                            estado = 0;
+                        }
+                        break;
+                        
+                    case 9: // Inside parenthesis for transitions
+                        if (ch == '"') {
+                            dentroComillas = true;
+                            lexema.setLength(0);
+                            estado = 10; // Reading symbol in transitions
+                        } else if (ch == ')') {
+                            dentroParentesis = false;
+                            estado = 0;
+                        } else if (!Character.isWhitespace(ch) && ch != ',') {
+                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                " carácter " + charActual + 
+                                ": Se esperaba símbolo entre comillas");
+                        }
+                        break;
+                        
+                    case 10: // Reading symbol in transitions
+                        if (ch == '"') {
+                            dentroComillas = false;
+                            simboloTransicion = lexema.toString();
+                            lexema.setLength(0);
+                            estado = 11; // After symbol
+                        } else {
+                            lexema.append(ch);
+                        }
+                        break;
+                        
+                    case 11: // After symbol, expecting ->
+                        if (ch == '-') {
+                            estado = 12; // First char of arrow
+                        } else if (!Character.isWhitespace(ch)) {
+                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                " carácter " + charActual + 
+                                ": Se esperaba '->' después del símbolo");
+                            estado = 9; // Back to inside parentheses
+                        }
+                        break;
+                        
+                    case 12: // Arrow first char
+                        if (ch == '>') {
+                            estado = 13; // After arrow, expecting destination state
+                        } else {
+                            erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                " carácter " + charActual + 
+                                ": Flecha mal formada, se esperaba '>'");
+                            estado = 9; // Back to inside parentheses
+                        }
+                        break;
+                        
+                    case 13: // After arrow, reading destination state
+                        if (ch == ',' || ch == ')') {
+                            estadoDestino = lexema.toString().trim();
+                            
+                            // Verify the destination state exists
+                            if (automataActual != null && !automataActual.estados.contains(estadoDestino)) {
+                                erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                    " carácter " + (charActual - estadoDestino.length()) + 
+                                    ": Estado destino '" + estadoDestino + "' no definido");
+                            }
+                            
+                            // Verify the symbol is in the alphabet
+                            if (automataActual != null && !automataActual.alfabeto.contains(simboloTransicion)) {
+                                erroresLexicos.add("Error léxico en línea " + lineaActual + 
+                                    " carácter " + (charActual - estadoDestino.length() - 2 - simboloTransicion.length()) + 
+                                    ": Símbolo '" + simboloTransicion + "' no definido en el alfabeto");
+                            }
+                            
+                            // Add transition
+                            if (automataActual != null) {
+                                HashMap<String, String> transiciones = automataActual.transiciones.getOrDefault(estadoOrigen, new HashMap<>());
+                                transiciones.put(simboloTransicion, estadoDestino);
+                                automataActual.transiciones.put(estadoOrigen, transiciones);
+                            }
+                            
+                            lexema.setLength(0);
+                            
+                            if (ch == ',') {
+                                estado = 9; // Back to inside parentheses
+                            } else if (ch == ')') {
+                                dentroParentesis = false;
+                                estado = 0;
+                            }
+                        } else if (!Character.isWhitespace(ch)) {
+                            lexema.append(ch);
+                        }
+                        break;
                 }
+                
+                charActual++;
             }
             
-            // Mostrar el contenido en el área de texto
+            // Show content in the text area
             archivoArea.setText(fileContent.toString());
             
-            // Validar si los automatas están completos
+            // Validate automata completeness
             for (Map.Entry<String, Automata> entry : automatas.entrySet()) {
                 Automata aut = entry.getValue();
                 if (aut.descripcion == null || aut.descripcion.isEmpty()) {
@@ -578,6 +650,19 @@ public class ADF_GRAPH12 extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage());
         }
     }
+    // Verificar autómatas cargados
+if (automatas.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "No se detectaron autómatas en el archivo.");
+} else {
+    System.out.println("Autómatas cargados: " + automatas.size());
+    for (String nombre : automatas.keySet()) {
+        System.out.println("- " + nombre);
+    }
+    
+    // Forzar actualización del ComboBox
+    selectAutomata.revalidate();
+    selectAutomata.repaint();
+}
 }
    private void graficarAutomata(String nombreAutomata) {
         Automata automata = automatas.get(nombreAutomata);
