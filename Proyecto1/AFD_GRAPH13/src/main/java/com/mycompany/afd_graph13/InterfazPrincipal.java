@@ -16,7 +16,7 @@ public class InterfazPrincipal extends JFrame {
     private final JLabel imagenLabel = new JLabel();
     private final JComboBox<String> selectAutomata = new JComboBox<>();
     
-    // Definición de colores personalizados
+    // colores personalizados
     private final Color COLOR_FONDO = new Color(240, 240, 245);
     private final Color COLOR_PANEL = new Color(255, 255, 255);
     private final Color COLOR_BORDE = new Color(70, 130, 180);
@@ -30,13 +30,13 @@ public class InterfazPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        // Establecer el color de fondo de la ventana principal
+        // Establece el color de fondo de la ventana principal
         getContentPane().setBackground(COLOR_FONDO);
 
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
         catch (Exception e) { e.printStackTrace(); }
         
-        // Personalizar la apariencia de los componentes Swing
+        // Personaliza la apariencia de los componentes Swing
         personalizarUI();
         
         configurarComponentes();
@@ -45,19 +45,19 @@ public class InterfazPrincipal extends JFrame {
     }
     
     private void personalizarUI() {
-        // Personalizar botones
+        //  botones
         UIManager.put("Button.background", COLOR_BOTON);
         UIManager.put("Button.foreground", COLOR_TEXTO_BOTON);
         UIManager.put("Button.font", new Font("Arial", Font.BOLD, 12));
         UIManager.put("Button.select", new Color(50, 100, 140));
         UIManager.put("Button.focus", new Color(70, 130, 180, 80));
         
-        // Personalizar ComboBox
+        //  ComboBox
         UIManager.put("ComboBox.background", Color.WHITE);
         UIManager.put("ComboBox.selectionBackground", COLOR_BOTON);
         UIManager.put("ComboBox.selectionForeground", Color.WHITE);
         
-        // Personalizar bordes de TitledBorder
+        //  bordes de TitledBorder
         UIManager.put("TitledBorder.font", new Font("Arial", Font.BOLD, 12));
         UIManager.put("TitledBorder.titleColor", COLOR_TITULO);
     }
@@ -236,7 +236,7 @@ public class InterfazPrincipal extends JFrame {
     private void generarReportes() {
         new GeneradorReportes(analizador).generar(automatas, erroresLexicos);
         
-        // Diálogo de confirmación personalizado
+        //  confirmación personalizado
         JDialog dialog = new JDialog(this, "Reportes Generados", true);
         dialog.setSize(350, 180);
         dialog.setLocationRelativeTo(this);

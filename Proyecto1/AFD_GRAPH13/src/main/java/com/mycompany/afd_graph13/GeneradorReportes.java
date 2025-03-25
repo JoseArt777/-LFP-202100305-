@@ -16,7 +16,7 @@ public class GeneradorReportes {
         generarReporteAutomatas(automatas);
         generarReporteErrores(erroresLexicos);
     }
-
+ // Genera reportes de tokens
     private void generarReporteTokens() {
         try (PrintWriter writer = new PrintWriter("reporte_tokens.html")) {
             writer.println("<!DOCTYPE html>");
@@ -179,7 +179,7 @@ public class GeneradorReportes {
             System.err.println("Error al generar reporte de tokens: " + e.getMessage());
         }
     }
-
+ // Genera los reportes de los automatas
     private void generarReporteAutomatas(HashMap<String, Automata> automatas) {
         try (PrintWriter writer = new PrintWriter("reporte_automatas.html")) {
             writer.println("<!DOCTYPE html>");
@@ -393,7 +393,7 @@ public class GeneradorReportes {
             System.err.println("Error al generar reporte de autómatas: " + e.getMessage());
         }
     }
-
+ // Genera Reporte Errores
     private void generarReporteErrores(ArrayList<String> errores) {
         try (PrintWriter writer = new PrintWriter("reporte_errores.html")) {
             writer.println("<!DOCTYPE html>");

@@ -37,18 +37,18 @@ public class AnalizadorLexico {
             
             area.setText(contenido.toString());
             
-            // Analizar tokens
+            // Analiza tokens
             analizarTokens(contenido.toString());
             
-            // Construir automatas a partir de los tokens
+            // Construye automatas a partir de los tokens
             construirAutomatas(automatas);
             
-            // Actualizar selector de combobox
+            // Actualiza el selector de combobox
             for (String nombre : automatas.keySet()) {
                 selector.addItem(nombre);
             }
             
-            // Convertir errores a formato string para el reporte
+            // Convierte errores a formato string para el reporte
             for (Token error : errores) {
                 erroresLexicos.add("Error léxico: '" + error.getLexema() + "' en línea " + error.getLinea() + ", columna " + error.getColumna());
             }
@@ -74,9 +74,8 @@ public class AnalizadorLexico {
             }
             
             switch (estado) {
-                case 0: // Estado inicial
+                case 0: 
                     if (Character.isWhitespace(c)) {
-                        // Ignorar espacios en blanco
                     } else if (c == '{') {
                         tokens.add(new Token(TipoToken.LLAVE_ABRE, "{", linea, columna));
                     } else if (c == '}') {
@@ -107,7 +106,7 @@ public class AnalizadorLexico {
                     }
                     break;
                     
-                case 1: // Posible flecha
+                case 1: 
                     if (c == '>') {
                         tokens.add(new Token(TipoToken.FLECHA, "->", linea, columna-1));
                         estado = 0;
@@ -118,7 +117,7 @@ public class AnalizadorLexico {
                     }
                     break;
                     
-                case 2: // Dentro de una cadena
+                case 2: 
                     if (c == '"') {
                         tokens.add(new Token(TipoToken.CADENA, lexema.toString(), linea, columna - lexema.length()));
                         lexema.setLength(0);
@@ -143,13 +142,13 @@ public class AnalizadorLexico {
                         
                         lexema.setLength(0);
                         estado = 0;
-                        i--; // Retroceder para procesar el carácter actual de nuevo
+                        i--; // Retrocede para procesar el carácter actual de nuevo
                     }
                     break;
             }
         }
         
-        // Manejar token final si quedó algo en el buffer
+        // Maneja token final si quedó algo en el buffer
         if (estado == 3 && lexema.length() > 0) {
             String valor = lexema.toString();
             TipoToken tipo = TipoToken.fromString(valor);
@@ -171,14 +170,14 @@ public class AnalizadorLexico {
         for (int i = 0; i < tokens.size(); i++) {
             Token token = tokens.get(i);
             
-            // Creación de un nuevo autómata
+            // Creación de un nuevo atuomata
             if (token.getTipo() == TipoToken.IDENTIFICADOR && i + 1 < tokens.size() && 
                 tokens.get(i + 1).getTipo() == TipoToken.DOS_PUNTOS) {
                 automataActual = new Automata(token.getLexema());
                 automatas.put(automataActual.getNombre(), automataActual);
                 i++; // Saltar los dos puntos
             } 
-            // Dentro de un autómata
+            // Dentro del autómata
             else if (automataActual != null) {
                 // Procesamiento de claves
                 if (token.getTipo() == TipoToken.DESCRIPCION || 
