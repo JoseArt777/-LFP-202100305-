@@ -1,0 +1,30 @@
+digraph "Isla del Tesoro" {
+  // Configuración general
+  graph [fontname="Segoe UI Emoji"];
+  node  [fontname="Segoe UI Emoji"];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Playa" [shape=ellipse, fillcolor="lightblue", label="Playa", pos="0,0!"];
+  "Selva" [shape=parallelogram, fillcolor="forestgreen", label="Selva", pos="1,1!"];
+  "Cima" [shape=triangle, fillcolor="sienna", label="Cima", pos="3,2!"];
+  "Caverna" [shape=box, fillcolor="gray", label="Caverna", pos="2,1!"];
+  "Embarcadero" [shape=house, fillcolor="burlywood", label="Embarcadero", pos="0,2!"];
+
+  // Objetos en coordenadas específicas
+  "obj_Llave_Dorada" [shape=pentagon, fillcolor="lightsteelblue", label="🔑 Llave Dorada", pos="2,2!"];
+
+  // Objetos en lugares
+  "obj_Cofre_del_Tesoro" [shape=box3d, fillcolor="gold", label="🎁 Cofre del Tesoro"];
+  "obj_Cofre_del_Tesoro" -> "Caverna" [label="en", dir=none, style=dotted];
+  "obj_Mapa_Antiguo" [shape=note, fillcolor="navajowhite", label="📕 Mapa Antiguo"];
+  "obj_Mapa_Antiguo" -> "Embarcadero" [label="en", dir=none, style=dotted];
+  "obj_Poción_Curativa" [shape=cylinder, fillcolor="plum", label="⚗️ Poción Curativa"];
+  "obj_Poción_Curativa" -> "Selva" [label="en", dir=none, style=dotted];
+
+  // Conexiones entre lugares
+  "Playa" -> "Selva" [label="sendero", color="saddlebrown", style=dashed];
+  "Selva" -> "Caverna" [label="camino", color="black", style=solid];
+  "Caverna" -> "Cima" [label="escalera", color="black", style=solid];
+  "Embarcadero" -> "Playa" [label="lancha", color="blue", style=solid];
+}

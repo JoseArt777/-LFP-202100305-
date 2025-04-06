@@ -7,11 +7,744 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         h1 { color: #333; text-align: center; }
-        p { text-align: center; color: green; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #f44336; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #ddd; }
     </style>
 </head>
 <body>
     <h1>Reporte de Errores</h1>
-    <p>No se detectaron errores en el análisis.</p>
+    <table>
+        <tr>
+            <th>Error</th>
+            <th>Descripción</th>
+            <th>Lexema</th>
+            <th>Línea</th>
+            <th>Columna</th>
+        </tr>
+        <tr>
+            <td>Error Léxico</td>
+            <td>Carácter no reconocido</td>
+            <td>;</td>
+            <td>4</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>Error Léxico</td>
+            <td>Carácter no reconocido</td>
+            <td>*</td>
+            <td>29</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Error Léxico</td>
+            <td>Carácter no reconocido</td>
+            <td>.</td>
+            <td>34</td>
+            <td>41</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba ':'</td>
+            <td>cueva</td>
+            <td>4</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>cueva</td>
+            <td>4</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>4</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>4</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>2</td>
+            <td>4</td>
+            <td>28</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>4</td>
+            <td>29</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>1</td>
+            <td>4</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>4</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un identificador para el nombre del lugar</td>
+            <td>at</td>
+            <td>5</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>5</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>3</td>
+            <td>5</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>5</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>3</td>
+            <td>5</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>5</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba ')'</td>
+            <td>place</td>
+            <td>7</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un identificador para el nombre del lugar</td>
+            <td>"Montaña"</td>
+            <td>9</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>:</td>
+            <td>9</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>montaña</td>
+            <td>9</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>9</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>9</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>5</td>
+            <td>9</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>9</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>5</td>
+            <td>9</td>
+            <td>36</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>9</td>
+            <td>37</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Bosque</td>
+            <td>10</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>:</td>
+            <td>10</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>jungla</td>
+            <td>10</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>10</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>10</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>6</td>
+            <td>10</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>10</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>6</td>
+            <td>10</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>10</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>plase</td>
+            <td>11</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Rio</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>:</td>
+            <td>11</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>río</td>
+            <td>11</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>11</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>11</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>7</td>
+            <td>11</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>11</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>7</td>
+            <td>11</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>11</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'to'</td>
+            <td>too</td>
+            <td>13</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>too</td>
+            <td>13</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Cueva</td>
+            <td>13</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>with</td>
+            <td>13</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"sendero"</td>
+            <td>13</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba una cadena para el tipo de camino</td>
+            <td>sendero</td>
+            <td>14</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'to'</td>
+            <td>Pueblo</td>
+            <td>15</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Pueblo</td>
+            <td>15</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>with</td>
+            <td>15</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"lancha"</td>
+            <td>15</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un identificador para el lugar origen</td>
+            <td>to</td>
+            <td>16</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>with</td>
+            <td>16</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"carretera"</td>
+            <td>16</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un identificador para el lugar destino</td>
+            <td>"Templo"</td>
+            <td>17</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>with</td>
+            <td>17</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"carretera"</td>
+            <td>17</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>objct</td>
+            <td>19</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"Tesoro"</td>
+            <td>19</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>:</td>
+            <td>19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>tesoro</td>
+            <td>19</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>19</td>
+            <td>28</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Cueva</td>
+            <td>19</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba ':'</td>
+            <td>libro</td>
+            <td>21</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>libro</td>
+            <td>21</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>21</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Pueblo</td>
+            <td>21</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba una cadena para el nombre del objeto</td>
+            <td>tesoro</td>
+            <td>22</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>at</td>
+            <td>22</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>(</td>
+            <td>22</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>3</td>
+            <td>22</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>22</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>4</td>
+            <td>22</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>22</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'at'</td>
+            <td>att</td>
+            <td>24</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>att</td>
+            <td>24</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Isla</td>
+            <td>24</td>
+            <td>29</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un identificador de lugar o '('</td>
+            <td>}</td>
+            <td>26</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>26</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>world</td>
+            <td>28</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"Reino @Corrupto#"</td>
+            <td>28</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>{</td>
+            <td>28</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un número para la coordenada Y</td>
+            <td>)</td>
+            <td>29</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba un número para la coordenada X</td>
+            <td>abc</td>
+            <td>30</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>30</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>5</td>
+            <td>30</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>30</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>connec</td>
+            <td>32</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Castillo</td>
+            <td>32</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>to</td>
+            <td>32</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>Bosque</td>
+            <td>32</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>with</td>
+            <td>32</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>"camino"</td>
+            <td>32</td>
+            <td>37</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba ','</td>
+            <td>5</td>
+            <td>34</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>5</td>
+            <td>34</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>,</td>
+            <td>34</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>4</td>
+            <td>34</td>
+            <td>44</td>
+        </tr>
+        <tr>
+            <td>Error Sintáctico</td>
+            <td>Se esperaba 'place', 'connect' u 'object'</td>
+            <td>)</td>
+            <td>34</td>
+            <td>45</td>
+        </tr>
+    </table>
 </body>
 </html>
