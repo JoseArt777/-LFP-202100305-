@@ -17,6 +17,16 @@ public class Token {
     private String lexeme;
     private int line;
     private int column;
+    private ErrorType errorType; // Nuevo campo para distinguir tipos de errores
+    
+    /**
+     * Enumeración para distinguir tipos de errores.
+     */
+    public enum ErrorType {
+        NONE,
+        LEXICAL,
+        SYNTACTIC
+    }
     
     /**
      * Constructor para un token.
@@ -31,6 +41,7 @@ public class Token {
         this.lexeme = lexeme;
         this.line = line;
         this.column = column;
+        this.errorType = ErrorType.NONE; // Por defecto, no es un error
     }
     
     /**
@@ -39,9 +50,23 @@ public class Token {
      * @param lexeme Lexema (texto) del token
      * @param line Línea donde se encontró el token
      * @param column Columna donde se encontró el token
+     * @param errorType Tipo de error (léxico o sintáctico)
+     */
+    public static Token createError(String lexeme, int line, int column, ErrorType errorType) {
+        Token errorToken = new Token(TokenType.ERROR, lexeme, line, column);
+        errorToken.errorType = errorType;
+        return errorToken;
+    }
+    
+    /**
+     * Constructor para un token de error léxico (para mantener compatibilidad).
+     * 
+     * @param lexeme Lexema (texto) del token
+     * @param line Línea donde se encontró el token
+     * @param column Columna donde se encontró el token
      */
     public static Token createError(String lexeme, int line, int column) {
-        return new Token(TokenType.ERROR, lexeme, line, column);
+        return createError(lexeme, line, column, ErrorType.LEXICAL);
     }
     
     // Getters
@@ -61,9 +86,17 @@ public class Token {
         return column;
     }
     
+    public ErrorType getErrorType() {
+        return errorType;
+    }
+    
+    public void setErrorType(ErrorType errorType) {
+        this.errorType = errorType;
+    }
+    
     @Override
     public String toString() {
-        return String.format("Token{type=%s, lexeme='%s', line=%d, column=%d}", 
-                type, lexeme, line, column);
+        return String.format("Token{type=%s, lexeme='%s', line=%d, column=%d, errorType=%s}", 
+                type, lexeme, line, column, errorType);
     }
 }

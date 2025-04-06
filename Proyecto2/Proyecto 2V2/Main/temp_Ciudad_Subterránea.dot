@@ -1,7 +1,7 @@
 digraph "Ciudad Subterránea" {
   // Configuración general
-  graph [fontname="Segoe UI Emoji"];
-  node  [fontname="Segoe UI Emoji"];
+  graph [fontname="Arial", rankdir=TB, overlap=false, splines=true];
+  node [fontname="Arial", style=filled];
   edge [fontname="Arial"];
 
   // Lugares

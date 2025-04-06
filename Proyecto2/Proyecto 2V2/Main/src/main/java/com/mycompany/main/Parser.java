@@ -66,29 +66,31 @@ public class Parser {
      * @return true si se consumió correctamente, false en caso contrario
      */
     private boolean consume(TokenType expectedType, String errorMessage) {
-        if (currentToken.getType() == expectedType) {
-            advance();
-            return true;
-        } else {
-            errors.add(Token.createError(
-                errorMessage + ", se encontró " + currentToken.getLexeme(),
-                currentToken.getLine(),
-                currentToken.getColumn()
-            ));
-            return false;
-        }
+    if (currentToken.getType() == expectedType) {
+        advance();
+        return true;
+    } else {
+        errors.add(Token.createError(
+            errorMessage + ", se encontró " + currentToken.getLexeme(),
+            currentToken.getLine(),
+            currentToken.getColumn(),
+            Token.ErrorType.SYNTACTIC
+        ));
+        return false;
     }
+}
     
     /**
      * Punto de entrada para el análisis de mundos.
      * Gramática: worlds -> world { world_body }, { world_body } ...
      */
     private void parseWorlds() {
-        while (currentToken.getType() != TokenType.EOF) {
-            if (currentToken.getType() == TokenType.WORLD) {
-                parseWorld();
-            } else {
-                // Error: se esperaba WORLD
+    while (currentToken.getType() != TokenType.EOF) {
+        if (currentToken.getType() == TokenType.WORLD) {
+            parseWorld();
+        } else {
+            // Error: se esperaba WORLD, pero no es un error si es EOF
+            if (currentToken.getType() != TokenType.EOF) {
                 errors.add(Token.createError(
                     "Se esperaba 'world', se encontró " + currentToken.getLexeme(),
                     currentToken.getLine(),
@@ -98,6 +100,12 @@ public class Parser {
             }
         }
     }
+    
+    // Eliminar cualquier error falso al final del archivo
+    if (!errors.isEmpty() && errors.get(errors.size() - 1).getLexeme().contains("Se esperaba 'world'")) {
+        errors.remove(errors.size() - 1);
+    }
+}
     
     /**
      * Analiza un mundo.
