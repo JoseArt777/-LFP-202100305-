@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.main;
-
-/**
- *
- * @author iosea
- */
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,9 +15,10 @@ public class ReportGenerator {
      * Genera un reporte HTML con la lista de tokens encontrados.
      * 
      * @param tokens Lista de tokens
+     * @param charTokens Lista de tokens a nivel de carácter
      * @return Contenido HTML del reporte
      */
-    public String generateTokensReport(ArrayList<Token> tokens) {
+    public String generateTokensReport(ArrayList<Token> tokens, ArrayList<CharacterToken> charTokens) {
         StringBuilder html = new StringBuilder();
         
         // Encabezado HTML
@@ -45,6 +37,7 @@ public class ReportGenerator {
         html.append("    tr:nth-child(even) { background-color: #f2f2f2; }\n");
         html.append("    tr:hover { background-color: #ddd; }\n");
         html.append("    .token-count { text-align: center; margin-top: 20px; font-weight: bold; }\n");
+        html.append("    .char-tokens th { background-color: #2196F3; }\n");
         html.append("  </style>\n");
         html.append("</head>\n");
         html.append("<body>\n");
@@ -92,6 +85,32 @@ public class ReportGenerator {
             html.append("      <td>").append(escapeHtml(token.getLexeme())).append("</td>\n");
             html.append("      <td>").append(token.getLine()).append("</td>\n");
             html.append("      <td>").append(token.getColumn()).append("</td>\n");
+            html.append("    </tr>\n");
+        }
+        
+        html.append("  </table>\n");
+        
+        // Tabla de tokens a nivel de carácter (nueva sección)
+        html.append("  <h2>Análisis Carácter por Carácter</h2>\n");
+        html.append("  <div class=\"token-count\">Total de caracteres analizados: ").append(charTokens.size()).append("</div>\n");
+        html.append("  <table class=\"char-tokens\">\n");
+        html.append("    <tr>\n");
+        html.append("      <th>#</th>\n");
+        html.append("      <th>Carácter</th>\n");
+        html.append("      <th>Tipo</th>\n");
+        html.append("      <th>Línea</th>\n");
+        html.append("      <th>Columna</th>\n");
+        html.append("    </tr>\n");
+        
+        // Filas de la tabla de caracteres
+        counter = 1;
+        for (CharacterToken charToken : charTokens) {
+            html.append("    <tr>\n");
+            html.append("      <td>").append(counter++).append("</td>\n");
+            html.append("      <td>").append(escapeHtml(String.valueOf(charToken.getCharacter()))).append("</td>\n");
+            html.append("      <td>").append(charToken.getType()).append("</td>\n");
+            html.append("      <td>").append(charToken.getLine()).append("</td>\n");
+            html.append("      <td>").append(charToken.getColumn()).append("</td>\n");
             html.append("    </tr>\n");
         }
         

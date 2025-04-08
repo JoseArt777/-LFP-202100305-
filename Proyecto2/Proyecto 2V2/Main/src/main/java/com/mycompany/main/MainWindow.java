@@ -562,43 +562,44 @@ public class MainWindow extends JFrame {
             }
         }
     }
-    
-    /**
-     * Genera los reportes de tokens y errores.
-     */
-    private void generateReports() {
-        if (tokens.isEmpty() && errors.isEmpty()) {
-            showNotification("No hay tokens o errores para generar reportes. Por favor analice un archivo primero.", true);
-            return;
-        }
-        
-        // Mostrar indicador de carga
-        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        ReportGenerator reportGenerator = new ReportGenerator();
-        try {
-            String tokensReport = reportGenerator.generateTokensReport(tokens);
-            String errorsReport = reportGenerator.generateErrorsReport(errors);
-            
-            // Guardar reportes
-            try (FileWriter tokensWriter = new FileWriter("tokens.html");
-                 FileWriter errorsWriter = new FileWriter("errores.html")) {
-                tokensWriter.write(tokensReport);
-                errorsWriter.write(errorsReport);
-            }
-            
-            showNotification("Reportes generados con éxito: tokens.html, errores.html", false);
-            
-            // Abrir reportes en el navegador
-            Desktop.getDesktop().browse(new File("tokens.html").toURI());
-            Desktop.getDesktop().browse(new File("errores.html").toURI());
-        } catch (IOException ex) {
-            showNotification("Error al generar reportes: " + ex.getMessage(), true);
-        }
-        
-        // Restaurar cursor
-        setCursor(Cursor.getDefaultCursor());
+
+private void generateReports() {
+    if (tokens.isEmpty() && errors.isEmpty()) {
+        showNotification("No hay tokens o errores para generar reportes. Por favor analice un archivo primero.", true);
+        return;
     }
+    
+    // Mostrar indicador de carga
+    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    
+    ReportGenerator reportGenerator = new ReportGenerator();
+    try {
+        // Obtener los tokens a nivel de carácter desde el lexer
+        ArrayList<CharacterToken> charTokens = lexer.getCharTokens();
+        
+        // Generar reportes
+        String tokensReport = reportGenerator.generateTokensReport(tokens, charTokens);
+        String errorsReport = reportGenerator.generateErrorsReport(errors);
+        
+        // Guardar reportes
+        try (FileWriter tokensWriter = new FileWriter("tokens.html");
+             FileWriter errorsWriter = new FileWriter("errores.html")) {
+            tokensWriter.write(tokensReport);
+            errorsWriter.write(errorsReport);
+        }
+        
+        showNotification("Reportes generados con éxito: tokens.html, errores.html", false);
+        
+        // Abrir reportes en el navegador
+        Desktop.getDesktop().browse(new File("tokens.html").toURI());
+        Desktop.getDesktop().browse(new File("errores.html").toURI());
+    } catch (IOException ex) {
+        showNotification("Error al generar reportes: " + ex.getMessage(), true);
+    }
+    
+    // Restaurar cursor
+    setCursor(Cursor.getDefaultCursor());
+}
     
     /**
      * Muestra un diálogo con información sobre el autor.

@@ -17,6 +17,7 @@ public class Lexer {
     
     private ArrayList<Token> tokens;
     private ArrayList<Token> errors;
+    private ArrayList<CharacterToken> charTokens; // Lista de tokens a nivel de carácter
     
     private static final Map<String, TokenType> KEYWORDS;
     
@@ -37,6 +38,7 @@ public class Lexer {
     public Lexer() {
         this.tokens = new ArrayList<>();
         this.errors = new ArrayList<>();
+        this.charTokens = new ArrayList<>();
     }
     
     /**
@@ -51,6 +53,7 @@ public class Lexer {
         this.column = 1;
         this.tokens = new ArrayList<>();
         this.errors = new ArrayList<>();
+        this.charTokens = new ArrayList<>();
         
         // Si hay entrada, tomar el primer carácter
         if (!input.isEmpty()) {
@@ -175,6 +178,21 @@ public class Lexer {
         } else {
             currentChar = input.charAt(position);
             
+            // Agregar el carácter actual a la lista de tokens de carácter
+            if (currentChar != '\0') {
+                String charType;
+                if (isAlpha(currentChar)) {
+                    charType = "LETRA";
+                } else if (isDigit(currentChar)) {
+                    charType = "DIGITO";
+                } else if (Character.isWhitespace(currentChar)) {
+                    charType = "ESPACIO";
+                } else {
+                    charType = "SIMBOLO";
+                }
+                charTokens.add(new CharacterToken(currentChar, charType, line, column));
+            }
+            
             // Actualizar contadores de línea y columna
             if (currentChar == '\n') {
                 line++;
@@ -294,5 +312,15 @@ public class Lexer {
      */
     public ArrayList<Token> getErrors() {
         return errors;
+    }
+    
+    /**
+     * Obtiene la lista de tokens a nivel de carácter.
+     * Esto es útil para mostrar un análisis detallado en los reportes.
+     * 
+     * @return Lista de tokens a nivel de carácter
+     */
+    public ArrayList<CharacterToken> getCharTokens() {
+        return charTokens;
     }
 }
