@@ -136,14 +136,10 @@ public class Lexer {
      * @return true si es una letra (incluyendo acentos y ñ) o guion bajo, false en caso contrario
      */
     private boolean isAlpha(char c) {
-        return (c >= 'a' && c <= 'z') || 
-               (c >= 'A' && c <= 'Z') || 
-               c == '_' ||
-               c == 'á' || c == 'é' || c == 'í' || c == 'ó' || c == 'ú' ||
-               c == 'Á' || c == 'É' || c == 'Í' || c == 'Ó' || c == 'Ú' ||
-               c == 'ü' || c == 'Ü' ||
-               c == 'ñ' || c == 'Ñ';
-    }
+    return (c >= 'a' && c <= 'z') || 
+           (c >= 'A' && c <= 'Z') || 
+           c == '_';
+}
     
     /**
      * Verifica si un carácter es un dígito.

@@ -1,0 +1,36 @@
+digraph "Aventura en la Jungla" {
+  // Configuración general
+  graph [fontname="Arial", rankdir=TB, overlap=false, splines=true];
+  node [fontname="Arial", style=filled];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Entrada" [shape=parallelogram, fillcolor="forestgreen", label="Entrada", pos="0,0!"];
+  "Rio" [shape=ellipse, fillcolor="white", label="Rio", pos="1,2!"];
+  "Montana" [shape=ellipse, fillcolor="white", label="Montana", pos="3,1!"];
+  "Volcan" [shape=ellipse, fillcolor="white", label="Volcan", pos="5,2!"];
+  "Aldea" [shape=house, fillcolor="burlywood", label="Aldea", pos="2,3!"];
+  "IslaMisteriosa" [shape=invtriangle, fillcolor="lightgoldenrod", label="IslaMisteriosa", pos="4,0!"];
+
+  // Objetos en coordenadas específicas
+  "obj_Llave_magica" [shape=pentagon, fillcolor="lightsteelblue", label="🔑 Llave magica", pos="3,2!"];
+  "obj_Pocion_curativa" [shape=cylinder, fillcolor="plum", label="⚗️ Pocion curativa", pos="1,1!"];
+
+  // Objetos en lugares
+  "obj_Tesoro_antiguo" [shape=box3d, fillcolor="gold", label="🎁 Tesoro antiguo"];
+  "obj_Tesoro_antiguo" -> "Montana" [label="en", dir=none, style=dotted];
+  "obj_Libro_sagrado" [shape=note, fillcolor="navajowhite", label="📕 Libro sagrado"];
+  "obj_Libro_sagrado" -> "Aldea" [label="en", dir=none, style=dotted];
+  "obj_Trampa_mortal" [shape=hexagon, fillcolor="crimson", label="💣 Trampa mortal"];
+  "obj_Trampa_mortal" -> "Rio" [label="en", dir=none, style=dotted];
+  "obj_Gema_roja" [shape=egg, fillcolor="deepskyblue", label="💎 Gema roja"];
+  "obj_Gema_roja" -> "IslaMisteriosa" [label="en", dir=none, style=dotted];
+
+  // Conexiones entre lugares
+  "Entrada" -> "Rio" [label="sendero", color="saddlebrown", style=dashed];
+  "Rio" -> "Montana" [label="camino", color="black", style=solid];
+  "Montana" -> "Volcan" [label="puente", color="gray", style=dotted];
+  "Aldea" -> "Montana" [label="carretera", color="darkgray", style=solid];
+  "Aldea" -> "IslaMisteriosa" [label="lancha", color="blue", style=solid];
+  "IslaMisteriosa" -> "Volcan" [label="teleferico", color="black", style=solid];
+}
