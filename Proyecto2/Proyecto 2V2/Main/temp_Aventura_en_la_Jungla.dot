@@ -6,9 +6,9 @@ digraph "Aventura en la Jungla" {
 
   // Lugares
   "Entrada" [shape=parallelogram, fillcolor="forestgreen", label="Entrada", pos="0,0!"];
-  "Rio" [shape=ellipse, fillcolor="white", label="Rio", pos="1,2!"];
-  "Montana" [shape=ellipse, fillcolor="white", label="Montana", pos="3,1!"];
-  "Volcan" [shape=ellipse, fillcolor="white", label="Volcan", pos="5,2!"];
+  "Rio" [shape=hexagon, fillcolor="deepskyblue", label="Rio", pos="1,2!"];
+  "Montana" [shape=triangle, fillcolor="sienna", label="Montana", pos="3,1!"];
+  "Volcan" [shape=doublecircle, fillcolor="orangered", label="Volcan", pos="5,2!"];
   "Aldea" [shape=house, fillcolor="burlywood", label="Aldea", pos="2,3!"];
   "IslaMisteriosa" [shape=invtriangle, fillcolor="lightgoldenrod", label="IslaMisteriosa", pos="4,0!"];
 
@@ -32,5 +32,5 @@ digraph "Aventura en la Jungla" {
   "Montana" -> "Volcan" [label="puente", color="gray", style=dotted];
   "Aldea" -> "Montana" [label="carretera", color="darkgray", style=solid];
   "Aldea" -> "IslaMisteriosa" [label="lancha", color="blue", style=solid];
-  "IslaMisteriosa" -> "Volcan" [label="teleferico", color="black", style=solid];
+  "IslaMisteriosa" -> "Volcan" [label="teleferico", color="purple", style=dotted];
 }

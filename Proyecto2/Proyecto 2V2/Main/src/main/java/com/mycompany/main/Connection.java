@@ -49,17 +49,18 @@ public class Connection {
      * @return Estilo de línea para Graphviz
      */
     public String getLineStyle() {
-        switch (type.toLowerCase()) {
-            case "camino": return "solid";
-            case "puente": return "dotted";
-            case "sendero": return "dashed";
-            case "carretera": return "solid";
-            case "nado": return "dashed";
-            case "lancha": return "solid";
-            case "teleférico": return "dotted";
-            default: return "solid"; // Estilo predeterminado
-        }
+    switch (type.toLowerCase()) {
+        case "camino": return "solid";
+        case "puente": return "dotted";
+        case "sendero": return "dashed";
+        case "carretera": return "solid";
+        case "nado": return "dashed";
+        case "lancha": return "solid";
+        case "teleférico": 
+        case "teleferico": return "dotted";
+        default: return "solid"; // Estilo predeterminado
     }
+}
     
     /**
      * Obtiene el color de la línea según el tipo de conexión.
@@ -67,17 +68,18 @@ public class Connection {
      * @return Color para Graphviz
      */
     public String getLineColor() {
-        switch (type.toLowerCase()) {
-            case "camino": return "black";
-            case "puente": return "gray";
-            case "sendero": return "saddlebrown";
-            case "carretera": return "darkgray";
-            case "nado": return "deepskyblue";
-            case "lancha": return "blue";
-            case "teleférico": return "purple";
-            default: return "black"; // Color predeterminado
-        }
+    switch (type.toLowerCase()) {
+        case "camino": return "black";
+        case "puente": return "gray";
+        case "sendero": return "saddlebrown";
+        case "carretera": return "darkgray";
+        case "nado": return "deepskyblue";
+        case "lancha": return "blue";
+        case "teleférico": 
+        case "teleferico": return "purple";
+        default: return "black"; // Color predeterminado
     }
+}
     
     @Override
     public String toString() {

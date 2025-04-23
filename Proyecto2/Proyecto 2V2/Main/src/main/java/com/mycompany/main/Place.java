@@ -56,20 +56,23 @@ public class Place {
      * @return Forma para Graphviz
      */
     public String getShape() {
-        switch (type.toLowerCase()) {
-            case "playa": return "ellipse";
-            case "cueva": return "box";
-            case "templo": return "octagon";
-            case "jungla": return "parallelogram";
-            case "montaña": return "triangle";
-            case "pueblo": return "house";
-            case "isla": return "invtriangle";
-            case "río": return "hexagon";
-            case "volcán": return "doublecircle";
-            case "pantano": return "trapezium";
-            default: return "ellipse"; // Forma predeterminada
-        }
+    switch (type.toLowerCase()) {
+        case "playa": return "ellipse";
+        case "cueva": return "box";
+        case "templo": return "octagon";
+        case "jungla": return "parallelogram";
+        case "montaña": 
+        case "montana": return "triangle";
+        case "pueblo": return "house";
+        case "isla": return "invtriangle";
+        case "río": 
+        case "rio": return "hexagon";
+        case "volcán": 
+        case "volcan": return "doublecircle";
+        case "pantano": return "trapezium";
+        default: return "ellipse"; // Forma predeterminada
     }
+}
     
     /**
      * Obtiene el color de relleno según el tipo de lugar.
@@ -77,20 +80,23 @@ public class Place {
      * @return Color para Graphviz
      */
     public String getFillColor() {
-        switch (type.toLowerCase()) {
-            case "playa": return "lightblue";
-            case "cueva": return "gray";
-            case "templo": return "gold";
-            case "jungla": return "forestgreen";
-            case "montaña": return "sienna";
-            case "pueblo": return "burlywood";
-            case "isla": return "lightgoldenrod";
-            case "río": return "deepskyblue";
-            case "volcán": return "orangered";
-            case "pantano": return "darkseagreen";
-            default: return "white"; // Color predeterminado
-        }
+    switch (type.toLowerCase()) {
+        case "playa": return "lightblue";
+        case "cueva": return "gray";
+        case "templo": return "gold";
+        case "jungla": return "forestgreen";
+        case "montaña": 
+        case "montana": return "sienna";
+        case "pueblo": return "burlywood";
+        case "isla": return "lightgoldenrod";
+        case "río": 
+        case "rio": return "deepskyblue";
+        case "volcán": 
+        case "volcan": return "orangered";
+        case "pantano": return "darkseagreen";
+        default: return "white"; // Color predeterminada
     }
+}
     
     @Override
     public String toString() {

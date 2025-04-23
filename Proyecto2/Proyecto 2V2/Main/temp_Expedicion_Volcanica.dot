@@ -9,7 +9,7 @@ digraph "Expedicion Volcanica" {
   "Pantano" [shape=trapezium, fillcolor="darkseagreen", label="Pantano", pos="1,2!"];
   "Jungla" [shape=parallelogram, fillcolor="forestgreen", label="Jungla", pos="2,4!"];
   "TemploAntiguo" [shape=octagon, fillcolor="gold", label="TemploAntiguo", pos="4,3!"];
-  "RíoProfundo" [shape=hexagon, fillcolor="deepskyblue", label="RíoProfundo", pos="3,1!"];
+  "RioProfundo" [shape=hexagon, fillcolor="deepskyblue", label="RioProfundo", pos="3,1!"];
   "CuevaOculta" [shape=box, fillcolor="gray", label="CuevaOculta", pos="5,0!"];
 
   // Objetos en coordenadas específicas
@@ -20,8 +20,8 @@ digraph "Expedicion Volcanica" {
   "obj_Arma_legendaria" -> "Jungla" [label="en", dir=none, style=dotted];
   "obj_Bandera_de_conquista" [shape=tab, fillcolor="white", label="🚩 Bandera de conquista"];
   "obj_Bandera_de_conquista" -> "TemploAntiguo" [label="en", dir=none, style=dotted];
-  "obj_Objeto_magico" [shape=box, fillcolor="white", label=" Objeto magico"];
-  "obj_Objeto_magico" -> "magico" [label="en", dir=none, style=dotted];
+  "obj_Objeto-magico" [shape=box, fillcolor="white", label=" Objeto-magico"];
+  "obj_Objeto-magico" -> "magico" [label="en", dir=none, style=dotted];
   "obj_Herramienta_rota" [shape=folder, fillcolor="darkkhaki", label="🛠️ Herramienta rota"];
   "obj_Herramienta_rota" -> "CuevaOculta" [label="en", dir=none, style=dotted];
 
@@ -31,5 +31,5 @@ digraph "Expedicion Volcanica" {
   "Jungla" -> "TemploAntiguo" [label="puente", color="gray", style=dotted];
   "TemploAntiguo" -> "CuevaOculta" [label="camino", color="black", style=solid];
   "RioProfundo" -> "Base" [label="carretera", color="darkgray", style=solid];
-  "CuevaOculta" -> "RioProfundo" [label="teleferico", color="black", style=solid];
+  "CuevaOculta" -> "RioProfundo" [label="teleferico", color="purple", style=dotted];
 }

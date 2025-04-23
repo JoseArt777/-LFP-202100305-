@@ -32,7 +32,7 @@ public class DotGenerator {
         StringBuilder dotContent = new StringBuilder();
         
         // Inicio del archivo DOT
-        dotContent.append("digraph \"").append(world.getName()).append("\" {\n");
+        dotContent.append("digraph \"").append(sanitizeString(world.getName())).append("\" {\n");
         dotContent.append("  // Configuración general\n");
         dotContent.append("  graph [fontname=\"Arial\", rankdir=TB, overlap=false, splines=true];\n");
         dotContent.append("  node [fontname=\"Arial\", style=filled];\n");
@@ -43,10 +43,10 @@ public class DotGenerator {
         Map<String, Place> placeMap = new HashMap<>();
         for (Place place : world.getPlaces()) {
             placeMap.put(place.getName(), place);
-            dotContent.append("  \"").append(place.getName()).append("\" [");
+            dotContent.append("  \"").append(sanitizeString(place.getName())).append("\" [");
             dotContent.append("shape=").append(place.getShape()).append(", ");
             dotContent.append("fillcolor=\"").append(place.getFillColor()).append("\", ");
-            dotContent.append("label=\"").append(place.getName()).append("\", ");
+            dotContent.append("label=\"").append(sanitizeString(place.getName())).append("\", ");
             dotContent.append("pos=\"").append(place.getX()).append(",").append(place.getY()).append("!\"];\n");
         }
         dotContent.append("\n");
@@ -55,11 +55,11 @@ public class DotGenerator {
         dotContent.append("  // Objetos en coordenadas específicas\n");
         for (MapObject object : world.getObjects()) {
             if (!object.isAtPlace()) {
-                String objectId = "obj_" + object.getName().replaceAll("\\s+", "_");
+                String objectId = "obj_" + sanitizeString(object.getName()).replaceAll("\\s+", "_");
                 dotContent.append("  \"").append(objectId).append("\" [");
                 dotContent.append("shape=").append(object.getShape()).append(", ");
                 dotContent.append("fillcolor=\"").append(object.getFillColor()).append("\", ");
-                dotContent.append("label=\"").append(object.getEmoji()).append(" ").append(object.getName()).append("\", ");
+                dotContent.append("label=\"").append(object.getEmoji()).append(" ").append(sanitizeString(object.getName())).append("\", ");
                 dotContent.append("pos=\"").append(object.getX()).append(",").append(object.getY()).append("!\"];\n");
             }
         }
@@ -69,14 +69,14 @@ public class DotGenerator {
         dotContent.append("  // Objetos en lugares\n");
         for (MapObject object : world.getObjects()) {
             if (object.isAtPlace()) {
-                String objectId = "obj_" + object.getName().replaceAll("\\s+", "_");
+                String objectId = "obj_" + sanitizeString(object.getName()).replaceAll("\\s+", "_");
                 dotContent.append("  \"").append(objectId).append("\" [");
                 dotContent.append("shape=").append(object.getShape()).append(", ");
                 dotContent.append("fillcolor=\"").append(object.getFillColor()).append("\", ");
-                dotContent.append("label=\"").append(object.getEmoji()).append(" ").append(object.getName()).append("\"];\n");
+                dotContent.append("label=\"").append(object.getEmoji()).append(" ").append(sanitizeString(object.getName())).append("\"];\n");
                 
                 // Conexión entre el objeto y el lugar
-                dotContent.append("  \"").append(objectId).append("\" -> \"").append(object.getPlaceId()).append("\" [");
+                dotContent.append("  \"").append(objectId).append("\" -> \"").append(sanitizeString(object.getPlaceId())).append("\" [");
                 dotContent.append("label=\"en\", dir=none, style=dotted];\n");
             }
         }
@@ -85,8 +85,8 @@ public class DotGenerator {
         // Generar conexiones entre lugares
         dotContent.append("  // Conexiones entre lugares\n");
         for (Connection conn : world.getConnections()) {
-            dotContent.append("  \"").append(conn.getSource()).append("\" -> \"").append(conn.getTarget()).append("\" [");
-            dotContent.append("label=\"").append(conn.getType()).append("\", ");
+            dotContent.append("  \"").append(sanitizeString(conn.getSource())).append("\" -> \"").append(sanitizeString(conn.getTarget())).append("\" [");
+            dotContent.append("label=\"").append(sanitizeString(conn.getType())).append("\", ");
             dotContent.append("color=\"").append(conn.getLineColor()).append("\", ");
             dotContent.append("style=").append(conn.getLineStyle()).append("];\n");
         }
@@ -94,9 +94,32 @@ public class DotGenerator {
         // Fin del archivo DOT
         dotContent.append("}\n");
         
-        // Escribir archivo
-        try (FileWriter writer = new FileWriter(filePath)) {
+        // Escribir archivo con codificación UTF-8
+        try (FileWriter writer = new FileWriter(filePath, java.nio.charset.StandardCharsets.UTF_8)) {
             writer.write(dotContent.toString());
         }
+    }
+    
+    /**
+     * Limpia una cadena para uso en GraphViz, removiendo acentos y caracteres especiales.
+     * 
+     * @param input Cadena a limpiar
+     * @return Cadena limpia
+     */
+    private String sanitizeString(String input) {
+        if (input == null) return "";
+        
+        // Reemplazar caracteres acentuados por sus equivalentes sin acento
+        String normalized = java.text.Normalizer.normalize(input, java.text.Normalizer.Form.NFD);
+        normalized = normalized.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        
+        // Reemplazar la ñ/Ñ por n/N
+        normalized = normalized.replace('ñ', 'n').replace('Ñ', 'N');
+        
+        // Reemplazar otros caracteres problemáticos para Graphviz
+        normalized = normalized.replace("\"", "'")
+                              .replace("\\", "\\\\");
+        
+        return normalized;
     }
 }

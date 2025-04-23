@@ -81,20 +81,22 @@ public class MapObject {
      * @return Forma para Graphviz
      */
     public String getShape() {
-        switch (type.toLowerCase()) {
-            case "tesoro": return "box3d";
-            case "llave": return "pentagon";
-            case "arma": return "diamond";
-            case "objeto mágico": case "objeto magico": return "component";
-            case "poción": case "pocion": return "cylinder";
-            case "trampa": return "hexagon";
-            case "libro": return "note";
-            case "herramienta": return "folder";
-            case "bandera": return "tab";
-            case "gema": return "egg";
-            default: return "box"; // Forma predeterminada
-        }
+    switch (type.toLowerCase()) {
+        case "tesoro": return "box3d";
+        case "llave": return "pentagon";
+        case "arma": return "diamond";
+        case "objeto-mágico": 
+        case "objeto-magico": return "component";
+        case "poción": 
+        case "pocion": return "cylinder";
+        case "trampa": return "hexagon";
+        case "libro": return "note";
+        case "herramienta": return "folder";
+        case "bandera": return "tab";
+        case "gema": return "egg";
+        default: return "box"; // Forma predeterminada
     }
+}
     
     /**
      * Obtiene el color de relleno según el tipo de objeto.
@@ -102,20 +104,22 @@ public class MapObject {
      * @return Color para Graphviz
      */
     public String getFillColor() {
-        switch (type.toLowerCase()) {
-            case "tesoro": return "gold";
-            case "llave": return "lightsteelblue";
-            case "arma": return "orangered";
-            case "objeto mágico": case "objeto magico": return "violet";
-            case "poción": case "pocion": return "plum";
-            case "trampa": return "crimson";
-            case "libro": return "navajowhite";
-            case "herramienta": return "darkkhaki";
-            case "bandera": return "white";
-            case "gema": return "deepskyblue";
-            default: return "white"; // Color predeterminado
-        }
+    switch (type.toLowerCase()) {
+        case "tesoro": return "gold";
+        case "llave": return "lightsteelblue";
+        case "arma": return "orangered";
+        case "objeto-mágico": 
+        case "objeto-magico": return "violet";
+        case "poción": 
+        case "pocion": return "plum";
+        case "trampa": return "crimson";
+        case "libro": return "navajowhite";
+        case "herramienta": return "darkkhaki";
+        case "bandera": return "white";
+        case "gema": return "deepskyblue";
+        default: return "white"; // Color predeterminado
     }
+}
     
     /**
      * Obtiene el emoji Unicode según el tipo de objeto.
@@ -127,8 +131,10 @@ public class MapObject {
         case "tesoro": return "\uD83C\uDF81"; // 🎁
         case "llave": return "\uD83D\uDD11"; // 🔑
         case "arma": return "\uD83D\uDDE1\uFE0F"; // 🗡️
-        case "objeto mágico": case "objeto magico": return "\u2728"; // ✨
-        case "poción": case "pocion": return "\u2697\uFE0F"; // ⚗️
+        case "objeto-mágico": 
+        case "objeto-magico": return "\u2728"; // ✨
+        case "poción": 
+        case "pocion": return "\u2697\uFE0F"; // ⚗️
         case "trampa": return "\uD83D\uDCA3"; // 💣
         case "libro": return "\uD83D\uDCD5"; // 📕
         case "herramienta": return "\uD83D\uDEE0\uFE0F"; // 🛠️
