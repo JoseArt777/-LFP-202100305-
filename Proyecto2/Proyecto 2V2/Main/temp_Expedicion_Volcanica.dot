@@ -20,8 +20,8 @@ digraph "Expedicion Volcanica" {
   "obj_Arma_legendaria" -> "Jungla" [label="en", dir=none, style=dotted];
   "obj_Bandera_de_conquista" [shape=tab, fillcolor="white", label="🚩 Bandera de conquista"];
   "obj_Bandera_de_conquista" -> "TemploAntiguo" [label="en", dir=none, style=dotted];
-  "obj_Objeto-magico" [shape=box, fillcolor="white", label=" Objeto-magico"];
-  "obj_Objeto-magico" -> "magico" [label="en", dir=none, style=dotted];
+  "obj_Objeto_magico" [shape=box, fillcolor="white", label=" Objeto magico"];
+  "obj_Objeto_magico" -> "magico" [label="en", dir=none, style=dotted];
   "obj_Herramienta_rota" [shape=folder, fillcolor="darkkhaki", label="🛠️ Herramienta rota"];
   "obj_Herramienta_rota" -> "CuevaOculta" [label="en", dir=none, style=dotted];
 

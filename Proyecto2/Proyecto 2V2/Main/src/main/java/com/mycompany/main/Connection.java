@@ -67,7 +67,7 @@ public class Connection {
      * 
      * @return Color para Graphviz
      */
-    public String getLineColor() {
+   public String getLineColor() {
     switch (type.toLowerCase()) {
         case "camino": return "black";
         case "puente": return "gray";
