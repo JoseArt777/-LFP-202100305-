@@ -343,7 +343,20 @@ public class MainWindow extends JFrame {
         loadButton.addActionListener(e -> loadFile());
         
         // Botón Limpiar Área
-        clearButton.addActionListener(e -> textArea.setText(""));
+        // Botón Limpiar Área
+        clearButton.addActionListener(e -> {
+        textArea.setText("");
+    
+        // Limpiar el panel de visualización
+        mapSelector.removeAllItems();
+        mapImages.clear();
+        imagePanel.repaint();
+    
+        // También es buena idea limpiar las estructuras de datos en memoria
+        worlds.clear();
+        tokens.clear();
+        errors.clear();
+        });
         
         // Botón Analizar Archivo
         analyzeButton.addActionListener(e -> analyzeFile());
