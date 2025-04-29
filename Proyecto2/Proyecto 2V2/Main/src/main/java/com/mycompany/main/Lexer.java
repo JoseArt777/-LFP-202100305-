@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Analizador léxico para el lenguaje de mapas narrativos.
- * Implementa análisis carácter por carácter de forma explícita.
  */
 public class Lexer {
     private String input;
@@ -33,7 +32,7 @@ public class Lexer {
     }
     
     /**
-     * Constructor por defecto.
+     * Constructor 
      */
     public Lexer() {
         this.tokens = new ArrayList<>();
@@ -62,7 +61,7 @@ public class Lexer {
             currentChar = '\0'; // Carácter nulo para indicar fin de entrada
         }
         
-        // Procesar todos los tokens
+        // Procesa todos los tokens
         Token token;
         do {
             token = getNextToken();
@@ -138,7 +137,8 @@ public class Lexer {
     private boolean isAlpha(char c) {
     return (c >= 'a' && c <= 'z') || 
            (c >= 'A' && c <= 'Z') || 
-           c == '_';
+           c == '_' ||
+           c == '-';
 }
     
     /**
