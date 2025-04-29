@@ -34,7 +34,7 @@ public class DotGenerator {
         // Inicio del archivo DOT
         dotContent.append("digraph \"").append(sanitizeString(world.getName())).append("\" {\n");
         dotContent.append("  // Configuración general\n");
-        dotContent.append("  graph [fontname=\"Arial\", rankdir=TB, overlap=false, splines=true];\n");
+dotContent.append("  graph [layout=neato, splines=true, overlap=false, fontname=\"Arial\"]; // permite uso de coordenadas\n");
         dotContent.append("  node [fontname=\"Arial\", style=filled];\n");
         dotContent.append("  edge [fontname=\"Arial\"];\n\n");
         

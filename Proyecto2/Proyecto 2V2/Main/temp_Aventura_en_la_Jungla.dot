@@ -1,6 +1,6 @@
 digraph "Aventura en la Jungla" {
   // Configuración general
-  graph [fontname="Arial", rankdir=TB, overlap=false, splines=true];
+  graph [layout=neato, splines=true, overlap=false, fontname="Arial"]; // permite uso de coordenadas
   node [fontname="Arial", style=filled];
   edge [fontname="Arial"];
 
