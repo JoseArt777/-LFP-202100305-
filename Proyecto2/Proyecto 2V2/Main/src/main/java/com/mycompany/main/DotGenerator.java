@@ -77,7 +77,7 @@ dotContent.append("  graph [layout=neato, splines=true, overlap=false, fontname=
                 
                 // Conexión entre el objeto y el lugar
                 dotContent.append("  \"").append(objectId).append("\" -> \"").append(sanitizeString(object.getPlaceId())).append("\" [");
-                dotContent.append("label=\"en\", dir=none, style=dotted];\n");
+dotContent.append("label=\"en\", style=dotted, arrowhead=normal];\n");
             }
         }
         dotContent.append("\n");

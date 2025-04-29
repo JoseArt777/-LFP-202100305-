@@ -17,13 +17,13 @@ digraph "Expedicion Volcanica" {
 
   // Objetos en lugares
   "obj_Arma_legendaria" [shape=diamond, fillcolor="orangered", label="🗡️ Arma legendaria"];
-  "obj_Arma_legendaria" -> "Jungla" [label="en", dir=none, style=dotted];
+  "obj_Arma_legendaria" -> "Jungla" [label="en", style=dotted, arrowhead=normal];
   "obj_Bandera_de_conquista" [shape=tab, fillcolor="white", label="🚩 Bandera de conquista"];
-  "obj_Bandera_de_conquista" -> "TemploAntiguo" [label="en", dir=none, style=dotted];
+  "obj_Bandera_de_conquista" -> "TemploAntiguo" [label="en", style=dotted, arrowhead=normal];
   "obj_Objeto_magico" [shape=component, fillcolor="violet", label="✨ Objeto magico"];
-  "obj_Objeto_magico" -> "Pantano" [label="en", dir=none, style=dotted];
+  "obj_Objeto_magico" -> "Pantano" [label="en", style=dotted, arrowhead=normal];
   "obj_Herramienta_rota" [shape=folder, fillcolor="darkkhaki", label="🛠️ Herramienta rota"];
-  "obj_Herramienta_rota" -> "CuevaOculta" [label="en", dir=none, style=dotted];
+  "obj_Herramienta_rota" -> "CuevaOculta" [label="en", style=dotted, arrowhead=normal];
 
   // Conexiones entre lugares
   "Base" -> "Pantano" [label="nado", color="deepskyblue", style=dashed];
