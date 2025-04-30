@@ -6,7 +6,7 @@ digraph "Aventura en la Jungla" {
 
   // Lugares
   "Entrada" [shape=parallelogram, fillcolor="forestgreen", label="Entrada", pos="0,0!"];
-  "Rio" [shape=hexagon, fillcolor="deepskyblue", label="Rio", pos="1,2!"];
+  "Aio" [shape=hexagon, fillcolor="deepskyblue", label="Aio", pos="1,2!"];
   "Montana" [shape=triangle, fillcolor="sienna", label="Montana", pos="3,1!"];
   "Volcan" [shape=doublecircle, fillcolor="orangered", label="Volcan", pos="5,2!"];
   "Aldea" [shape=house, fillcolor="burlywood", label="Aldea", pos="2,3!"];
@@ -18,13 +18,13 @@ digraph "Aventura en la Jungla" {
 
   // Objetos en lugares
   "obj_Tesoro_antiguo" [shape=box3d, fillcolor="gold", label="🎁 Tesoro antiguo"];
-  "obj_Tesoro_antiguo" -> "Montana" [label="en", dir=none, style=dotted];
+  "obj_Tesoro_antiguo" -> "Montana" [label="en", style=dotted, arrowhead=normal];
   "obj_Libro_sagrado" [shape=note, fillcolor="navajowhite", label="📕 Libro sagrado"];
-  "obj_Libro_sagrado" -> "Aldea" [label="en", dir=none, style=dotted];
+  "obj_Libro_sagrado" -> "Aldea" [label="en", style=dotted, arrowhead=normal];
   "obj_Trampa_mortal" [shape=hexagon, fillcolor="crimson", label="💣 Trampa mortal"];
-  "obj_Trampa_mortal" -> "Rio" [label="en", dir=none, style=dotted];
+  "obj_Trampa_mortal" -> "Rio" [label="en", style=dotted, arrowhead=normal];
   "obj_Gema_roja" [shape=egg, fillcolor="deepskyblue", label="💎 Gema roja"];
-  "obj_Gema_roja" -> "IslaMisteriosa" [label="en", dir=none, style=dotted];
+  "obj_Gema_roja" -> "IslaMisteriosa" [label="en", style=dotted, arrowhead=normal];
 
   // Conexiones entre lugares
   "Entrada" -> "Rio" [label="sendero", color="saddlebrown", style=dashed];

@@ -10,7 +10,7 @@ package com.mycompany.main;
  */
 
 /**
- * Enumeración de los tipos de tokens reconocidos por el analizador léxico.
+ * Enumeración de los tipos de tokens reconocidos por el analizador lexico
  */
 public enum TokenType {
     // Palabras reservadas

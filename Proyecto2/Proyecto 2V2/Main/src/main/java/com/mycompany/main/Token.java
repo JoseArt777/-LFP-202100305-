@@ -19,9 +19,7 @@ public class Token {
     private int column;
     private ErrorType errorType; // Nuevo campo para distinguir tipos de errores
     
-    /**
-     * Enumeración para distinguir tipos de errores.
-     */
+    
     public enum ErrorType {
         NONE,
         LEXICAL,

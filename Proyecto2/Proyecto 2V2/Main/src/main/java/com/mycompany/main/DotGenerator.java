@@ -31,14 +31,14 @@ public class DotGenerator {
     public void generateDotFile(World world, String filePath) throws IOException {
         StringBuilder dotContent = new StringBuilder();
         
-        // Inicio del archivo DOT
+        // Inicio  DOT
         dotContent.append("digraph \"").append(sanitizeString(world.getName())).append("\" {\n");
         dotContent.append("  // Configuración general\n");
-dotContent.append("  graph [layout=neato, splines=true, overlap=false, fontname=\"Arial\"]; // permite uso de coordenadas\n");
+        dotContent.append("  graph [layout=neato, splines=true, overlap=false, fontname=\"Arial\"]; // permite uso de coordenadas\n");
         dotContent.append("  node [fontname=\"Arial\", style=filled];\n");
         dotContent.append("  edge [fontname=\"Arial\"];\n\n");
         
-        // Generar nodos para lugares
+        // nodos para lugares
         dotContent.append("  // Lugares\n");
         Map<String, Place> placeMap = new HashMap<>();
         for (Place place : world.getPlaces()) {
@@ -51,7 +51,7 @@ dotContent.append("  graph [layout=neato, splines=true, overlap=false, fontname=
         }
         dotContent.append("\n");
         
-        // Generar nodos para objetos con coordenadas específicas
+        // genera nodos para objetos con coordenadas 
         dotContent.append("  // Objetos en coordenadas específicas\n");
         for (MapObject object : world.getObjects()) {
             if (!object.isAtPlace()) {
@@ -91,7 +91,7 @@ dotContent.append("label=\"en\", style=dotted, arrowhead=normal];\n");
             dotContent.append("style=").append(conn.getLineStyle()).append("];\n");
         }
         
-        // Fin del archivo DOT
+        // Fin del  DOT
         dotContent.append("}\n");
         
         // Escribir archivo con codificación UTF-8
@@ -113,7 +113,7 @@ dotContent.append("label=\"en\", style=dotted, arrowhead=normal];\n");
         String normalized = java.text.Normalizer.normalize(input, java.text.Normalizer.Form.NFD);
         normalized = normalized.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         
-        // Reemplazar la ñ/Ñ por n/N
+        // Reemplazar ñÑ por nN
         normalized = normalized.replace('ñ', 'n').replace('Ñ', 'N');
         
         // Reemplazar otros caracteres problemáticos para Graphviz

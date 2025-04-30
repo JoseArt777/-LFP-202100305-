@@ -12,7 +12,7 @@ package com.mycompany.main;
 import java.util.ArrayList;
 
 /**
- * Clase que representa un mundo o escenario en el mapa narrativo.
+ * Clase que representa un mundo en mapa narrativo.
  */
 public class World {
     private String name;

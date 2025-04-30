@@ -90,7 +90,7 @@ public class ReportGenerator {
         
         html.append("  </table>\n");
         
-        // Tabla de tokens a nivel de carácter (nueva sección)
+        // Tabla de tokens a nivel de carácter 
         html.append("  <h2>Análisis Carácter por Carácter</h2>\n");
         html.append("  <div class=\"token-count\">Total de caracteres analizados: ").append(charTokens.size()).append("</div>\n");
         html.append("  <table class=\"char-tokens\">\n");
