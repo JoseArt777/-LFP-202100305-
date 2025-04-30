@@ -16,7 +16,7 @@ public class Lexer {
     
     private ArrayList<Token> tokens;
     private ArrayList<Token> errors;
-    private ArrayList<CharacterToken> charTokens; // Lista de tokens a nivel de carácter
+    private ArrayList<CharacterToken> charTokens; // Lista de tokens a nivel  carácter
     
     private static final Map<String, TokenType> KEYWORDS;
     
@@ -58,7 +58,7 @@ public class Lexer {
         if (!input.isEmpty()) {
             currentChar = input.charAt(0);
         } else {
-            currentChar = '\0'; // Carácter nulo para indicar fin de entrada
+            currentChar = '\0'; // Carácter nulo para indicar fin 
         }
         
         // Procesa todos los tokens
@@ -73,24 +73,19 @@ public class Lexer {
         } while (token.getType() != TokenType.EOF);
     }
     
-    /**
-     * Obtiene el siguiente token de la entrada.
-     * Implementa un análisis carácter por carácter explícito.
-     * 
-     * @return El siguiente token
-     */
+    
     private Token getNextToken() {
-        // Ignorar espacios en blanco
+        // Ignora espacios en blanco
         skipWhitespace();
         
-        // Verificar fin de archivo
+        // Verifica nuestro fin de archivo
         if (currentChar == '\0') {
             return new Token(TokenType.EOF, "", line, column);
         }
         
         // Identificar el tipo de token
         
-        // Identificadores y palabras clave
+        // Identificadores, palabras clave
         if (isAlpha(currentChar)) {
             return scanIdentifier();
         }
@@ -141,30 +136,21 @@ public class Lexer {
            c == '-';
 }
     
-    /**
-     * Verifica si un carácter es un dígito.
-     * 
-     * @param c Carácter a verificar
-     * @return true si es un dígito, false en caso contrario
-     */
+  
     private boolean isDigit(char c) {
         return c >= '0' && c <= '9';
     }
     
-    /**
-     * Verifica si un carácter es alfanumérico o guion bajo.
-     * 
-     * @param c Carácter a verificar
-     * @return true si es alfanumérico o guion bajo, false en caso contrario
-     */
+    
+     // Verifica si un carácter es alfanumérico o guion bajo.
+     
     private boolean isAlphaNum(char c) {
         return isAlpha(c) || isDigit(c);
     }
     
-    /**
-     * Avanza a la siguiente posición en la entrada.
-     * Esta función implementa el avance carácter por carácter.
-     */
+    
+     //Avanza a la siguiente posición en la entrada.
+     
     private void advance() {
         position++;
         column++;
@@ -189,7 +175,7 @@ public class Lexer {
                 charTokens.add(new CharacterToken(currentChar, charType, line, column));
             }
             
-            // Actualizar contadores de línea y columna
+            // Actualiza  contadores de línea y columna
             if (currentChar == '\n') {
                 line++;
                 column = 1;
@@ -197,10 +183,7 @@ public class Lexer {
         }
     }
     
-    /**
-     * Salta los espacios en blanco en la entrada.
-     * Implementa un análisis carácter por carácter.
-     */
+    
     private void skipWhitespace() {
         while (currentChar != '\0' && Character.isWhitespace(currentChar)) {
             advance();
@@ -210,18 +193,15 @@ public class Lexer {
     /**
      * Reconoce un identificador o palabra clave.
      * Implementa un análisis carácter por carácter, consumiendo un carácter a la vez.
-     * 
-     * @return Token de identificador o palabra clave
      */
     private Token scanIdentifier() {
         int startColumn = column;
         StringBuilder lexeme = new StringBuilder();
         
-        // Consumir el primer carácter (que sabemos que es una letra o guion bajo)
+        // consumimos el primer carácter 
         lexeme.append(currentChar);
         advance();
         
-        // Seguir consumiendo caracteres mientras sean alfanuméricos o guion bajo
         while (currentChar != '\0' && isAlphaNum(currentChar)) {
             lexeme.append(currentChar);
             advance();
@@ -254,17 +234,14 @@ public class Lexer {
     
     /**
      * Reconoce una cadena de texto.
-     * Implementa un análisis carácter por carácter, consumiendo un carácter a la vez.
-     * 
      * @return Token de cadena
      */
     private Token scanString() {
         int startColumn = column;
         StringBuilder lexeme = new StringBuilder();
-        lexeme.append(currentChar); // Incluir la comilla inicial
+        lexeme.append(currentChar);
         advance();
         
-        // Consumir caracteres hasta encontrar la comilla de cierre
         while (currentChar != '\0' && currentChar != '"') {
             lexeme.append(currentChar);
             advance();
@@ -281,8 +258,7 @@ public class Lexer {
     }
     
     /**
-     * Consume un token simple (de un solo carácter).
-     * 
+    
      * @param type Tipo de token a consumir
      * @return Token consumido
      */
@@ -312,8 +288,6 @@ public class Lexer {
     
     /**
      * Obtiene la lista de tokens a nivel de carácter.
-     * Esto es útil para mostrar un análisis detallado en los reportes.
-     * 
      * @return Lista de tokens a nivel de carácter
      */
     public ArrayList<CharacterToken> getCharTokens() {

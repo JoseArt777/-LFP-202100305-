@@ -43,11 +43,7 @@ public class Connection {
         return type;
     }
     
-    /**
-     * Obtiene el estilo de línea según el tipo de conexión.
-     * 
-     * @return Estilo de línea para Graphviz
-     */
+   
     public String getLineStyle() {
     switch (type.toLowerCase()) {
         case "camino": return "solid";
@@ -62,11 +58,7 @@ public class Connection {
     }
 }
     
-    /**
-     * Obtiene el color de la línea según el tipo de conexión.
-     * 
-     * @return Color para Graphviz
-     */
+ 
    public String getLineColor() {
     switch (type.toLowerCase()) {
         case "camino": return "black";

@@ -6,11 +6,11 @@ package com.mycompany.main;
 
 
 /**
- * Clase que representa un token a nivel de carácter individual para propósitos de reporte.
+ * Clase que representa un token a nivel carácter
  */
 public class CharacterToken {
     private char character;
-    private String type; // Clasificación básica: LETRA, DIGITO, SIMBOLO, ESPACIO
+    private String type; //  LETRA, DIGITO, SIMBOLO, ESPACIO
     private int line;
     private int column;
     

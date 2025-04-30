@@ -15,10 +15,10 @@ package com.mycompany.main;
 public class MapObject {
     private String name;
     private String type;
-    private String placeId; // ID del lugar donde se encuentra (si está en un lugar)
-    private int x; // Coordenada X (si está en una posición específica)
-    private int y; // Coordenada Y (si está en una posición específica)
-    private boolean isAtPlace; // Indica si el objeto está en un lugar o en coordenadas
+    private String placeId; // ID del lugar
+    private int x; // Coordenada X 
+    private int y; // Coordenada Y
+    private boolean isAtPlace; 
     
     /**
      * Constructor para un objeto en un lugar específico.
@@ -94,7 +94,7 @@ public class MapObject {
         case "herramienta": return "folder";
         case "bandera": return "tab";
         case "gema": return "egg";
-        default: return "box"; // Forma predeterminada
+        default: return "box";
     }
 }
     
@@ -121,11 +121,7 @@ public class MapObject {
     }
 }
     
-    /**
-     * Obtiene el emoji Unicode según el tipo de objeto.
-     * 
-     * @return Código Unicode para el emoji
-     */
+    
     public String getEmoji() {
     switch (type.toLowerCase()) {
         case "tesoro": return "\uD83C\uDF81"; // 🎁

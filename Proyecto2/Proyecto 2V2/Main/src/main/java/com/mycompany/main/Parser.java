@@ -13,7 +13,7 @@ package com.mycompany.main;
 import java.util.ArrayList;
 
 /**
- * Analizador sintáctico para el lenguaje de mapas narrativos.
+ * Analizador sintáctico 
  */
 public class Parser {
     private ArrayList<Token> tokens;
@@ -48,9 +48,9 @@ public class Parser {
         }
     }
     
-    /**
-     * Avanza al siguiente token.
-     */
+    
+     // Avanza al siguiente token.
+     
     private void advance() {
         position++;
         if (position < tokens.size()) {
@@ -89,19 +89,18 @@ public class Parser {
         if (currentToken.getType() == TokenType.WORLD) {
             parseWorld();
         } else {
-            // Error: se esperaba WORLD, pero no es un error si es EOF
             if (currentToken.getType() != TokenType.EOF) {
                 errors.add(Token.createError(
                     "Se esperaba 'world', se encontró " + currentToken.getLexeme(),
                     currentToken.getLine(),
                     currentToken.getColumn()
                 ));
-                advance(); // Recuperación: avanzar y continuar
+                advance(); 
             }
         }
     }
     
-    // Eliminar cualquier error falso al final del archivo
+    // Elimina cualquier error falso al final del archivo
     if (!errors.isEmpty() && errors.get(errors.size() - 1).getLexeme().contains("Se esperaba 'world'")) {
         errors.remove(errors.size() - 1);
     }
@@ -112,14 +111,13 @@ public class Parser {
      * Gramática: world -> "world" STRING "{" place_list connection_list object_list "}"
      */
     private void parseWorld() {
-        // Consumir "world"
+        // Consumimos "world"
         advance();
         
         // Obtener el nombre del mundo
         String worldName = "";
         if (currentToken.getType() == TokenType.STRING) {
             worldName = currentToken.getLexeme();
-            // Quitar las comillas
             worldName = worldName.substring(1, worldName.length() - 1);
             advance();
         } else {
@@ -132,15 +130,15 @@ public class Parser {
         
         World world = new World(worldName);
         
-        // Consumir "{"
+        // Consume "{"
         if (consume(TokenType.LBRACE, "Se esperaba '{'")) {
-            // Analizar el cuerpo del mundo
+            // Analiza el cuerpo del mundo
             parseWorldBody(world);
             
-            // Consumir "}"
+            // Consume "}"
             consume(TokenType.RBRACE, "Se esperaba '}'");
             
-            // Agregar el mundo a la lista
+            // Agrega el mundo a la lista
             worlds.add(world);
             
             // Si hay una coma, avanzar
@@ -179,7 +177,7 @@ public class Parser {
                     currentToken.getLine(),
                     currentToken.getColumn()
                 ));
-                advance(); // Recuperación: avanzar y continuar
+                advance(); // Recuperación: avanza y continuamos
             }
         }
     }
@@ -208,7 +206,7 @@ public class Parser {
             advance();
         }
         
-        // Consumir ":"
+        // Consume ":"
         if (!consume(TokenType.COLON, "Se esperaba ':'")) {
             // Recuperación: buscar "at"
             while (currentToken.getType() != TokenType.AT && 
@@ -232,7 +230,7 @@ public class Parser {
             advance();
         }
         
-        // Consumir "at"
+        // Consumimos "at"
         if (!consume(TokenType.AT, "Se esperaba 'at'")) {
             // Recuperación: buscar "("
             while (currentToken.getType() != TokenType.LPAREN && 
@@ -242,9 +240,8 @@ public class Parser {
             }
         }
         
-        // Consumir "("
+        // Consumimos "("
         if (!consume(TokenType.LPAREN, "Se esperaba '('")) {
-            // Recuperación: buscar el número o ","
             while (currentToken.getType() != TokenType.NUMBER && 
                    currentToken.getType() != TokenType.COMMA && 
                    currentToken.getType() != TokenType.RBRACE && 
@@ -253,7 +250,7 @@ public class Parser {
             }
         }
         
-        // Obtener coordenada X
+        // obtiene  eje  X
         int x = 0;
         if (currentToken.getType() == TokenType.NUMBER) {
             x = Integer.parseInt(currentToken.getLexeme());
@@ -266,9 +263,8 @@ public class Parser {
             ));
         }
         
-        // Consumir ","
+        // se consume ","
         if (!consume(TokenType.COMMA, "Se esperaba ','")) {
-            // Recuperación: buscar el número o ")"
             while (currentToken.getType() != TokenType.NUMBER && 
                    currentToken.getType() != TokenType.RPAREN && 
                    currentToken.getType() != TokenType.RBRACE && 
@@ -277,7 +273,7 @@ public class Parser {
             }
         }
         
-        // Obtener coordenada Y
+        // obtiene  eje Y
         int y = 0;
         if (currentToken.getType() == TokenType.NUMBER) {
             y = Integer.parseInt(currentToken.getLexeme());
@@ -290,10 +286,10 @@ public class Parser {
             ));
         }
         
-        // Consumir ")"
+        // consumimos ")"
         consume(TokenType.RPAREN, "Se esperaba ')'");
         
-        // Agregar el lugar al mundo
+        // Agregamos el lugar al mundo
         if (!placeName.isEmpty() && !placeType.isEmpty()) {
             world.addPlace(new Place(placeName, placeType, x, y));
         }
@@ -306,10 +302,9 @@ public class Parser {
      * @param world Mundo al que se agregará la conexión
      */
     private void parseConnectionDecl(World world) {
-        // Consumir "connect"
+        // se consume "connect"
         advance();
         
-        // Obtener el lugar de origen
         String sourcePlace = "";
         if (currentToken.getType() == TokenType.IDENTIFIER) {
             sourcePlace = currentToken.getLexeme();
@@ -323,9 +318,9 @@ public class Parser {
             advance();
         }
         
-        // Consumir "to"
+        // consumimos "to"
         if (!consume(TokenType.TO, "Se esperaba 'to'")) {
-            // Recuperación: buscar el lugar destino
+            // Recuperación: buscamos el lugar destino
             while (currentToken.getType() != TokenType.IDENTIFIER && 
                    currentToken.getType() != TokenType.WITH && 
                    currentToken.getType() != TokenType.RBRACE && 
@@ -334,7 +329,7 @@ public class Parser {
             }
         }
         
-        // Obtener el lugar de destino
+        // obtiene el lugar de destino
         String targetPlace = "";
         if (currentToken.getType() == TokenType.IDENTIFIER) {
             targetPlace = currentToken.getLexeme();
@@ -348,9 +343,8 @@ public class Parser {
             advance();
         }
         
-        // Consumir "with"
+        // consumimos "with"
         if (!consume(TokenType.WITH, "Se esperaba 'with'")) {
-            // Recuperación: buscar el tipo de conexión
             while (currentToken.getType() != TokenType.STRING && 
                    currentToken.getType() != TokenType.RBRACE && 
                    currentToken.getType() != TokenType.EOF) {
@@ -358,7 +352,7 @@ public class Parser {
             }
         }
         
-        // Obtener el tipo de conexión
+        // se otiene el tipo de conexión
         String connectionType = "";
         if (currentToken.getType() == TokenType.STRING) {
             connectionType = currentToken.getLexeme();
@@ -374,7 +368,7 @@ public class Parser {
             advance();
         }
         
-        // Agregar la conexión al mundo
+        // Agrega la conexión al mundo
         if (!sourcePlace.isEmpty() && !targetPlace.isEmpty() && !connectionType.isEmpty()) {
             world.addConnection(new Connection(sourcePlace, targetPlace, connectionType));
         }
@@ -392,11 +386,9 @@ public class Parser {
         // Consumir "object"
         advance();
         
-        // Obtener el nombre del objeto
         String objectName = "";
         if (currentToken.getType() == TokenType.STRING) {
             objectName = currentToken.getLexeme();
-            // Quitar las comillas
             objectName = objectName.substring(1, objectName.length() - 1);
             advance();
         } else {
@@ -408,7 +400,7 @@ public class Parser {
             advance();
         }
         
-        // Consumir ":"
+        // se consume ":"
         if (!consume(TokenType.COLON, "Se esperaba ':'")) {
             // Recuperación: buscar el tipo de objeto
             while (currentToken.getType() != TokenType.IDENTIFIER && 
@@ -419,7 +411,7 @@ public class Parser {
             }
         }
         
-        // Obtener el tipo de objeto
+        // Obtiene el tipo de objeto
         String objectType = "";
         if (currentToken.getType() == TokenType.IDENTIFIER) {
             objectType = currentToken.getLexeme();
@@ -433,9 +425,9 @@ public class Parser {
             advance();
         }
         
-        // Consumir "at"
+        // se consume "at"
         if (!consume(TokenType.AT, "Se esperaba 'at'")) {
-            // Recuperación: buscar la ubicación
+            // Recuperación: busca la ubicación
             while (currentToken.getType() != TokenType.IDENTIFIER && 
                    currentToken.getType() != TokenType.LPAREN && 
                    currentToken.getType() != TokenType.RBRACE && 
@@ -455,10 +447,8 @@ public class Parser {
                 world.addObject(new MapObject(objectName, objectType, placeId));
             }
         } else if (currentToken.getType() == TokenType.LPAREN) {
-            // Objeto en coordenadas
             advance();
             
-            // Obtener coordenada X
             int x = 0;
             if (currentToken.getType() == TokenType.NUMBER) {
                 x = Integer.parseInt(currentToken.getLexeme());
@@ -472,7 +462,7 @@ public class Parser {
                 advance();
             }
             
-            // Consumir ","
+            // consumimos ","
             if (!consume(TokenType.COMMA, "Se esperaba ','")) {
                 // Recuperación: buscar el número o ")"
                 while (currentToken.getType() != TokenType.NUMBER && 
@@ -496,7 +486,7 @@ public class Parser {
                 ));
             }
             
-            // Consumir ")"
+            // consumimos ")"
             consume(TokenType.RPAREN, "Se esperaba ')'");
             
             // Agregar el objeto al mundo
