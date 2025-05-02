@@ -1,0 +1,19 @@
+digraph "Mundo Comparacion" {
+  // Configuración general
+  graph [layout=neato, splines=true, overlap=false, fontname="Arial"]; // permite uso de coordenadas
+  node [fontname="Arial", style=filled];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Isla" [shape=invtriangle, fillcolor="lightgoldenrod", label="Isla", pos="1,2!"];
+  "Pueblo" [shape=house, fillcolor="burlywood", label="Pueblo", pos="4,1!"];
+
+  // Objetos en coordenadas específicas
+
+  // Objetos en lugares
+  "obj_Mapa" [shape=note, fillcolor="navajowhite", label="📕 Mapa"];
+  "obj_Mapa" -> "on" [label="en", style=dotted, arrowhead=normal];
+
+  // Conexiones entre lugares
+  "Isla" -> "Playa" [label="lancha", color="blue", style=solid];
+}

@@ -1,0 +1,19 @@
+digraph "Mundo Erroneo" {
+  // Configuración general
+  graph [layout=neato, splines=true, overlap=false, fontname="Arial"]; // permite uso de coordenadas
+  node [fontname="Arial", style=filled];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Playa" [shape=ellipse, fillcolor="lightblue", label="Playa", pos="0,0!"];
+  "Cuev" [shape=box, fillcolor="gray", label="Cuev", pos="2,1!"];
+
+  // Objetos en coordenadas específicas
+
+  // Objetos en lugares
+  "obj_Tesoro$$" [shape=box3d, fillcolor="gold", label="🎁 Tesoro$$"];
+  "obj_Tesoro$$" -> "Pueblo" [label="en", style=dotted, arrowhead=normal];
+
+  // Conexiones entre lugares
+  "Playa" -> "Cueva" [label="sendero", color="saddlebrown", style=dashed];
+}

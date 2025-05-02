@@ -1,0 +1,15 @@
+digraph "Expedicion" {
+  // Configuración general
+  graph [layout=neato, splines=true, overlap=false, fontname="Arial"]; // permite uso de coordenadas
+  node [fontname="Arial", style=filled];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Base" [shape=doublecircle, fillcolor="orangered", label="Base", pos="0,0!"];
+
+  // Objetos en coordenadas específicas
+
+  // Objetos en lugares
+
+  // Conexiones entre lugares
+}

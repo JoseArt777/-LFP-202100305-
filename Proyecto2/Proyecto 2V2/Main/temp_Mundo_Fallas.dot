@@ -1,0 +1,15 @@
+digraph "Mundo Fallas" {
+  // Configuración general
+  graph [layout=neato, splines=true, overlap=false, fontname="Arial"]; // permite uso de coordenadas
+  node [fontname="Arial", style=filled];
+  edge [fontname="Arial"];
+
+  // Lugares
+  "Playa" [shape=ellipse, fillcolor="lightblue", label="Playa", pos="0,0!"];
+
+  // Objetos en coordenadas específicas
+
+  // Objetos en lugares
+
+  // Conexiones entre lugares
+}
